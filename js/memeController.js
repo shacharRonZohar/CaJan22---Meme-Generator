@@ -6,6 +6,7 @@ function init() {
     const canvasCtx = document.querySelector('#main-canvas').getContext('2d')
     _addEventListeners(elCanvas, canvasCtx)
     resizeCanvas(elCanvas)
+    loadImageToCanvas('assets/meme-imgs/1.jpg', renderImgOnCanvas, canvasCtx)
 }
 
 function renderMeme() {
@@ -20,7 +21,7 @@ function renderMeme() {
 // }
 
 function onImgInput() {
-    loadImageToCanvas(src, renderImgOnCanvas)
+
 }
 
 function loadImageToCanvas(src, onImageReady) {
@@ -31,7 +32,7 @@ function loadImageToCanvas(src, onImageReady) {
     console.log('onload');
     var img = new Image()
         // Render on canvas
-    img.onload = onImageReady.bind(null, img)
+    img.onload = onImageReady.bind(null, img, canvasCtx)
     img.src = src
         // gImg = img
         // }
