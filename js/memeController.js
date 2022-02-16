@@ -6,10 +6,11 @@ function init() {
     const canvasCtx = document.querySelector('#main-canvas').getContext('2d')
     _addEventListeners(elCanvas, canvasCtx)
     resizeCanvas(elCanvas)
-    loadImageToCanvas('assets/meme-imgs/1.jpg', renderImgOnCanvas, canvasCtx)
+    renderMeme(elCanvas, canvasCtx)
 }
 
-function renderMeme() {
+function renderMeme(elCanvas, canvasCtx) {
+    loadImageToCanvas('assets/meme-imgs/1.jpg', renderImgOnCanvas, elCanvas, canvasCtx)
 
 }
 
@@ -24,20 +25,24 @@ function onImgInput() {
 
 }
 
-function loadImageToCanvas(src, onImageReady) {
+function loadImageToCanvas(src, onImageReady, elCanvas, canvasCtx) {
+    // console.log('src', src)
+    // console.log('onImageReady', onImageReady)
+    // console.log('canvasCtx', canvasCtx)
+
     // document.querySelector('.share-container').innerHTML = ''
     // var reader = new FileReader()
 
     // reader.onload = function(event) {
-    console.log('onload');
+    // console.log('onload');
     var img = new Image()
         // Render on canvas
-    img.onload = onImageReady.bind(null, img, canvasCtx)
+    img.onload = onImageReady.bind(null, img, elCanvas, canvasCtx)
     img.src = src
         // gImg = img
         // }
-    console.log('after');
-    // reader.readAsDataURL(ev.target.files[0])
+        // console.log('after');
+        // reader.readAsDataURL(ev.target.files[0])
 }
 
 function resizeCanvas(elCanvas) {
@@ -53,6 +58,6 @@ function _addEventListeners(elCanvas, canvasCtx) {
 function _addCanvasResizeListener(elCanvas, canvasCtx) {
     window.addEventListener('resize', () => {
         resizeCanvas(elCanvas)
-        renderCanvas(elCanvas, canvasCtx)
+        renderMeme(elCanvas, canvasCtx)
     })
 }
