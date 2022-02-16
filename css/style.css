@@ -1,3 +1,4 @@
 /* Base */
 
-@import url(/css/base/main.css);
+@import url(base/main.css);
+@import url(base/layout.css);
