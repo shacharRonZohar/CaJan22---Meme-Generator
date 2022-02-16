@@ -1,14 +1,18 @@
 /* Base */
 
-@import url(base/main.css);
-@import url(base/layout.css);
+@import url(basic/base.css);
+@import url(basic/layout.css);
 
 /* Helpers */
 
-@import url(base/helpers.css);
+@import url(basic/helpers.css);
 
 /* Components */
 
+
+/* Main-content */
+
+@import url(componenets/main-content.css);
 
 /* Header */
 
@@ -23,8 +27,10 @@
 /* Main Gallery */
 
 @import url(componenets/main-gallery/main-gallery-container.css);
+@import url(componenets/main-gallery/main-gallery-nav.css);
 @import url(componenets/main-gallery/main-gallery-item.css);
 
-/* Typography */
+/* Setup */
 
-@import url(typography.css);
+@import url(setup/vars.css);
+@import url(setup/typography.css);

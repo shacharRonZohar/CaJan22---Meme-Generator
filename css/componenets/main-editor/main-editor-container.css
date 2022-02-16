@@ -1,6 +1,14 @@
 .main-editor-container {
-    background-color: black;
+    /* background-color: black; */
     /* display: grid; */
+    display: flex;
+    margin-top: 3em;
     grid-area: 4 / 4 / span 14 /span 14;
     grid-template: repeat(10, 1fr)/repeat(10, 1fr);
+}
+
+.main-editor-container>* {
+    /* flex-grow: 1; */
+    flex-basis: 50%;
+    min-height: 400px;
 }
