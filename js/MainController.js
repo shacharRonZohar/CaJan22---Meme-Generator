@@ -29,6 +29,7 @@ function _addEventListeners(elCanvas, canvasCtx) {
     _addLineInputListener(elCanvas, canvasCtx)
     _addImgsEventListeners(elCanvas, canvasCtx)
     _addMainColorPickerListener(elCanvas, canvasCtx)
+    _addChangeFontSizeListeners(elCanvas, canvasCtx)
 }
 
 function _addLineInputListener(elCanvas, canvasCtx) {
@@ -58,9 +59,16 @@ function _addImgsEventListeners(elCanvas, canvasCtx) {
     console.log(elGallery.querySelectorAll('img'))
     elGallery.querySelectorAll('img').forEach(img => {
         img.addEventListener('click', () => {
-            // console.log('ev', ev)
-
             setTimeout(showMemeEditor, 1, elCanvas, canvasCtx)
         })
+    })
+}
+
+function _addChangeFontSizeListeners(elCanvas, canvasCtx) {
+    document.querySelector('#increase-font-size').addEventListener('click', () => {
+        onChangeFontSize(1, elCanvas, canvasCtx, )
+    })
+    document.querySelector('#decrease-font-size').addEventListener('click', () => {
+        onChangeFontSize(-1, elCanvas, canvasCtx, )
     })
 }

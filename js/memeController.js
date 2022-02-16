@@ -7,13 +7,14 @@ function showMemeEditor(elCanvas, canvasCtx) {
 }
 
 function renderMeme(elCanvas, canvasCtx) {
+    console.log('elCanvas', canvasCtx)
     const meme = getMeme()
-    console.log('meme', meme)
-
     loadImageToCanvas(meme, elCanvas, canvasCtx)
 }
 
 function loadImageToCanvas(meme, elCanvas, canvasCtx) {
+    // console.log('meme', meme)
+
     // Render on canvas
     var img = new Image()
     img.onload = renderImgOnCanvas.bind(null, img, elCanvas, canvasCtx, meme)
@@ -28,8 +29,11 @@ function renderImgOnCanvas(img, elCanvas, ctx, { lines }) {
     })
 }
 
-function onChangeFontSize(diff) {
+function onChangeFontSize(diff, elCanvas, canvasCtx) {
     changeFontSize(diff)
+    console.log('canvasCtx', canvasCtx)
+
+    renderMeme(elCanvas, canvasCtx)
 }
 
 function drawText(canvasCtx, { size, fontSize, align, color, txt }, { x, y }) {
