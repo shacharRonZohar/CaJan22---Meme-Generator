@@ -5,9 +5,8 @@ function init() {
     _setInitElVisibility()
     const elCanvas = document.querySelector('#main-canvas')
     const canvasCtx = document.querySelector('#main-canvas').getContext('2d')
-    _addEventListeners(elCanvas, canvasCtx)
-    resizeCanvas(elCanvas)
     renderGallery()
+    _addEventListeners(elCanvas, canvasCtx)
 }
 
 function resizeCanvas(elCanvas) {
@@ -17,7 +16,6 @@ function resizeCanvas(elCanvas) {
 }
 
 function _setInitElVisibility() {
-    // console.log(document.querySelector('.main-editor-container').classList);
     document.querySelector('.main-editor-container').style.display = 'none'
 }
 
@@ -25,19 +23,12 @@ function _setInitElVisibility() {
 function _addEventListeners(elCanvas, canvasCtx) {
     _addCanvasResizeListener(elCanvas, canvasCtx)
     _addLineInputListener(elCanvas, canvasCtx)
+    _addImgsEventListeners(elCanvas, canvasCtx)
 }
 
 function _addLineInputListener(elCanvas, canvasCtx) {
     document.querySelector('#line-text').addEventListener('input', (ev) => {
-        console.log('ev', ev.srcElement.value)
-            // console.log('ev.this', ev.this)
-
-        // console.log('this.value', this.value)
-
         setLineTxt(ev.srcElement.value)
-            // console.log('gMeme', gMeme)
-        console.log('getMeme()', getMeme())
-
         renderMeme(elCanvas, canvasCtx)
     })
 }
@@ -47,5 +38,17 @@ function _addCanvasResizeListener(elCanvas, canvasCtx) {
         console.log('resizing')
         resizeCanvas(elCanvas)
         renderMeme(elCanvas, canvasCtx)
+    })
+}
+
+function _addImgsEventListeners(elCanvas, canvasCtx) {
+    const elGallery = document.querySelector('.main-gallery-container')
+    console.log(elGallery.querySelectorAll('img'))
+    elGallery.querySelectorAll('img').forEach(img => {
+        img.addEventListener('click', () => {
+            // console.log('ev', ev)
+
+            setTimeout(showMemeEditor, 1, elCanvas, canvasCtx)
+        })
     })
 }

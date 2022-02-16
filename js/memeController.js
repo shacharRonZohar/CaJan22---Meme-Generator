@@ -1,7 +1,15 @@
 'use strict'
 
+function showMemeEditor(elCanvas, canvasCtx) {
+    document.querySelector('.main-editor-container').style.display = 'grid'
+    resizeCanvas(elCanvas)
+    renderMeme(elCanvas, canvasCtx)
+}
+
 function renderMeme(elCanvas, canvasCtx) {
     const meme = getMeme()
+    console.log('meme', meme)
+
     loadImageToCanvas(meme, elCanvas, canvasCtx)
 }
 
