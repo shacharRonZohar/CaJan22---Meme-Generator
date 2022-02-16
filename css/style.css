@@ -5,6 +5,13 @@
 
 /* Components */
 
+
+/* Main Editor */
+
 @import url(componenets/main-editor/main-editor-container.css);
 @import url(componenets/main-editor/main-canvas-container.css);
 @import url(componenets/main-editor/meme-controls-container.css);
+
+/* Main Gallery */
+
+@import url(componenets/main-gallery/main-gallery-container.css);
