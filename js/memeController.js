@@ -24,9 +24,13 @@ function loadImageToCanvas(meme, elCanvas, canvasCtx) {
 
 function renderImgOnCanvas(img, elCanvas, ctx, { lines }) {
     ctx.drawImage(img, 0, 0, elCanvas.width, elCanvas.height);
-    lines.forEach(line => {
-        drawText(ctx, line, { x: elCanvas.width / 2, y: 100 })
+    lines.forEach((line, currIdx) => {
+        drawText(ctx, line, { x: elCanvas.width / 2, y: 100 * (currIdx + 1) })
     })
+}
+
+function onCycleLine() {
+    cycleLine()
 }
 
 function onChangeFontSize(diff, elCanvas, canvasCtx) {

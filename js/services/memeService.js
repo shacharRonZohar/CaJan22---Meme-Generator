@@ -7,12 +7,20 @@ var gMeme = {
     selectedImgId: 5,
     selectedLineIdx: 0,
     lines: [{
-        txt: 'Enter your text here',
-        size: 20,
-        fontSize: 48,
-        align: 'center',
-        color: 'red'
-    }]
+            txt: 'Enter your text here',
+            size: 20,
+            fontSize: 48,
+            align: 'center',
+            color: 'red'
+        },
+        {
+            txt: 'Enter your text here',
+            size: 20,
+            fontSize: 48,
+            align: 'center',
+            color: 'red'
+        },
+    ]
 }
 
 // Getters
@@ -40,4 +48,10 @@ function setTxtMainColor(color) {
 // Changers
 function changeFontSize(diff) {
     gMeme.lines[gMeme.selectedLineIdx].fontSize += diff
+}
+
+function cycleLine() {
+    gMeme.selectedLineIdx++
+        if (gMeme.selectedLineIdx >= gMeme.lines.length) console.log('oops')
+
 }
