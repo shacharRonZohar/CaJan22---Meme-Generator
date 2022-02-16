@@ -56,6 +56,22 @@ function _getMemeParams(meme) {
 
 function _addEventListeners(elCanvas, canvasCtx) {
     _addCanvasResizeListener(elCanvas, canvasCtx)
+    _addLineInputListener(elCanvas, canvasCtx)
+}
+
+function _addLineInputListener(elCanvas, canvasCtx) {
+    document.querySelector('#line-text').addEventListener('input', (ev) => {
+        console.log('ev', ev.srcElement.value)
+            // console.log('ev.this', ev.this)
+
+        // console.log('this.value', this.value)
+
+        setLineTxt(ev.srcElement.value)
+            // console.log('gMeme', gMeme)
+        console.log('getMeme()', getMeme())
+
+        renderMeme(elCanvas, canvasCtx)
+    })
 }
 
 function _addCanvasResizeListener(elCanvas, canvasCtx) {
