@@ -6,6 +6,10 @@
 /* Components */
 
 
+/* Header */
+
+@import url(componenets/header.css);
+
 /* Main Editor */
 
 @import url(componenets/main-editor/main-editor-container.css);

@@ -1,9 +1,10 @@
 .main-flex-container {
-    display: flex;
     height: 100vh;
+    /* flex-direction: column; */
     /* grid-template: repeat(20, 1fr) / repeat(20, 1fr); */
 }
 
-.main-flex-container .main-layout {
+.main-layout {
     max-width: 1260px;
+    margin: 0 auto;
 }

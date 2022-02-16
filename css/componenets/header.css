@@ -1,0 +1,20 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    /* flex-direction: column; */
+}
+
+header nav {
+    /* display: flex; */
+    /* width: 100%; */
+    justify-content: space-between;
+}
+
+
+/* header nav :first-child {
+    margin-inline-start: 80px;
+} */
+
+header ul {
+    display: flex;
+}
