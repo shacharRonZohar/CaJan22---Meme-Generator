@@ -56,7 +56,6 @@ function _addCanvasResizeListener(elCanvas, canvasCtx) {
 
 function _addImgsEventListeners(elCanvas, canvasCtx) {
     const elGallery = document.querySelector('.main-gallery-container')
-    console.log(elGallery.querySelectorAll('img'))
     elGallery.querySelectorAll('img').forEach(img => {
         img.addEventListener('click', () => {
             setTimeout(showMemeEditor, 1, elCanvas, canvasCtx)

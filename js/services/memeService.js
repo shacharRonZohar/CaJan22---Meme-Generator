@@ -30,14 +30,14 @@ function setMemeImg(id) {
 }
 
 function setLineTxt(txt) {
-    gMeme.lines[0].txt = txt
+    gMeme.lines[gMeme.selectedLineIdx].txt = txt
 }
 
 function setTxtMainColor(color) {
-    gMeme.lines[0].color = color
+    gMeme.lines[gMeme.selectedLineIdx].color = color
 }
 
 // Changers
 function changeFontSize(diff) {
-    gMeme.lines[0].fontSize += diff
+    gMeme.lines[gMeme.selectedLineIdx].fontSize += diff
 }
