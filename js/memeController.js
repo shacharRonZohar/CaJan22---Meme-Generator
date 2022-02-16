@@ -1,6 +1,5 @@
 'use strict'
 
-
 function init() {
     const elCanvas = document.querySelector('#main-canvas')
     const canvasCtx = document.querySelector('#main-canvas').getContext('2d')
@@ -10,20 +9,16 @@ function init() {
 }
 
 function renderMeme(elCanvas, canvasCtx) {
-    loadImageToCanvas('assets/meme-imgs/1.jpg', renderImgOnCanvas, elCanvas, canvasCtx)
+    const meme = getMeme()
+    loadImageToCanvas(_getMemeParams(meme), elCanvas, canvasCtx)
 }
 
-
-function onImgInput() {
-
-}
-
-function loadImageToCanvas(src, onImageReady, elCanvas, canvasCtx) {
+function loadImageToCanvas({ src }, elCanvas, canvasCtx) {
 
 
     // Render on canvas
     var img = new Image()
-    img.onload = onImageReady.bind(null, img, elCanvas, canvasCtx)
+    img.onload = renderImgOnCanvas.bind(null, img, elCanvas, canvasCtx)
     img.src = src
 
 }
@@ -37,17 +32,8 @@ function renderImgOnCanvas(img, elCanvas, ctx) {
     drawText(ctx, 'Test', initPos)
 }
 
-function resizeCanvas(elCanvas) {
-    const elCanvasContainer = document.querySelector('.main-canvas-container')
-    elCanvas.height = elCanvasContainer.offsetHeight
-    elCanvas.width = elCanvasContainer.offsetWidth
-}
 
 function drawText(canvasCtx, text, { x, y }) {
-    console.log('text', text)
-    console.log('x,y', x, y)
-    console.log('canvasCtx', canvasCtx)
-
     canvasCtx.font = '48px serif';
     canvasCtx.fillText(text, x, y);
     // canvasCtx.lineWidth = 10;
@@ -56,6 +42,19 @@ function drawText(canvasCtx, text, { x, y }) {
     // canvasCtx.font = '20px Arial';
     // canvasCtx.fillText(text, x, y);
     // canvasCtx.strokeText(text, x, y);
+}
+
+function resizeCanvas(elCanvas) {
+    const elCanvasContainer = document.querySelector('.main-canvas-container')
+    elCanvas.height = elCanvasContainer.offsetHeight
+    elCanvas.width = elCanvasContainer.offsetWidth
+}
+
+function _getMemeParams(meme) {
+    console.log('meme', meme)
+    return {
+        src: `assets/meme-imgs/${meme.selectedImgId}.jpg`,
+    }
 }
 
 function _addEventListeners(elCanvas, canvasCtx) {
