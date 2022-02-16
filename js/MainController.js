@@ -12,7 +12,11 @@ function init() {
 function resizeCanvas(elCanvas) {
     const elCanvasContainer = document.querySelector('.main-canvas-container')
     elCanvas.height = elCanvasContainer.offsetHeight
+    console.log('elCanvasContainer.offsetWidth', elCanvasContainer.offsetHeight)
+
     elCanvas.width = elCanvasContainer.offsetWidth
+        // console.log('elCanvas.width', elCanvas.width)
+
 }
 
 function _setInitElVisibility() {
@@ -24,11 +28,19 @@ function _addEventListeners(elCanvas, canvasCtx) {
     _addCanvasResizeListener(elCanvas, canvasCtx)
     _addLineInputListener(elCanvas, canvasCtx)
     _addImgsEventListeners(elCanvas, canvasCtx)
+    _addMainColorPickerListener(elCanvas, canvasCtx)
 }
 
 function _addLineInputListener(elCanvas, canvasCtx) {
     document.querySelector('#line-text').addEventListener('input', (ev) => {
         setLineTxt(ev.srcElement.value)
+        renderMeme(elCanvas, canvasCtx)
+    })
+}
+
+function _addMainColorPickerListener(elCanvas, canvasCtx) {
+    document.querySelector('#main-color-picker').addEventListener('input', (ev) => {
+        setTxtMainColor(ev.srcElement.value)
         renderMeme(elCanvas, canvasCtx)
     })
 }

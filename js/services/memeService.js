@@ -39,5 +39,5 @@ function setTxtMainColor(color) {
 
 // Changers
 function changeFontSize(diff) {
-    gMeme.lines[0]
+    gMeme.lines[0].fontSize += diff
 }

@@ -28,6 +28,9 @@ function renderImgOnCanvas(img, elCanvas, ctx, { lines }) {
     })
 }
 
+function onChangeFontSize(diff) {
+    changeFontSize(diff)
+}
 
 function drawText(canvasCtx, { size, fontSize, align, color, txt }, { x, y }) {
     const currFont = `${fontSize}px serif`

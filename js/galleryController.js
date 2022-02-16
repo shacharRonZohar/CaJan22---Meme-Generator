@@ -1,7 +1,6 @@
 'use strict'
 
 function renderGallery() {
-    // const imgs = 
     getImgs().forEach(img => {
         const elGallContainer = document.querySelector('.main-gallery-container')
         elGallContainer.innerHTML +=
@@ -13,6 +12,6 @@ function renderGallery() {
 
 function onImgClicked(id) {
     console.log('id', id)
+    document.querySelector('.main-gallery-container').style.display = 'none'
     setMemeImg(id)
-        // showMemeEditor()
 }
