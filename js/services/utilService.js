@@ -40,6 +40,3 @@ Array.prototype.autoSortObj = function(objKey, sortType, isAsc) {
 }
 
 // Canvas
-function renderImgOnCanvas(img, elCanvas, ctx) {
-    ctx.drawImage(img, 0, 0, elCanvas.width, elCanvas.height);
-}

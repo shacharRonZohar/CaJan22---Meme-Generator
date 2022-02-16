@@ -11,11 +11,6 @@ function init() {
 
 function renderMeme(elCanvas, canvasCtx) {
     loadImageToCanvas('assets/meme-imgs/1.jpg', renderImgOnCanvas, elCanvas, canvasCtx)
-    const initPos = {
-        x: 100,
-        y: 100
-    }
-    drawText(canvasCtx, 'Test', initPos)
 }
 
 
@@ -25,11 +20,21 @@ function onImgInput() {
 
 function loadImageToCanvas(src, onImageReady, elCanvas, canvasCtx) {
 
+
     // Render on canvas
     var img = new Image()
     img.onload = onImageReady.bind(null, img, elCanvas, canvasCtx)
     img.src = src
 
+}
+
+function renderImgOnCanvas(img, elCanvas, ctx) {
+    ctx.drawImage(img, 0, 0, elCanvas.width, elCanvas.height);
+    const initPos = {
+        x: 100,
+        y: 100
+    }
+    drawText(ctx, 'Test', initPos)
 }
 
 function resizeCanvas(elCanvas) {
