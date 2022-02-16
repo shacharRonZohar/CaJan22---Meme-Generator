@@ -11,7 +11,11 @@ function init() {
 
 function renderMeme(elCanvas, canvasCtx) {
     loadImageToCanvas('assets/meme-imgs/1.jpg', renderImgOnCanvas, elCanvas, canvasCtx)
-
+    const initPos = {
+        x: 100,
+        y: 100
+    }
+    drawText(canvasCtx, 'Test', initPos)
 }
 
 
@@ -32,6 +36,21 @@ function resizeCanvas(elCanvas) {
     const elCanvasContainer = document.querySelector('.main-canvas-container')
     elCanvas.height = elCanvasContainer.offsetHeight
     elCanvas.width = elCanvasContainer.offsetWidth
+}
+
+function drawText(canvasCtx, text, { x, y }) {
+    console.log('text', text)
+    console.log('x,y', x, y)
+    console.log('canvasCtx', canvasCtx)
+
+    canvasCtx.font = '48px serif';
+    canvasCtx.fillText(text, x, y);
+    // canvasCtx.lineWidth = 10;
+    // canvasCtx.strokeStyle = 'brown';
+    // canvasCtx.fillStyle = 'black';
+    // canvasCtx.font = '20px Arial';
+    // canvasCtx.fillText(text, x, y);
+    // canvasCtx.strokeText(text, x, y);
 }
 
 function _addEventListeners(elCanvas, canvasCtx) {
