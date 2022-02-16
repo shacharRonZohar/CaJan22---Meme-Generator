@@ -43,11 +43,12 @@
                     <canvas id="main-canvas"></canvas>
                 </div>
                 <div class="meme-controls-container">
-                    <input type="text" name="line-text" id="line-text">
-                    <input type="color" name="main-color-picker" id="main-color-picker">
+                    <input type="text" name="line-text" id="line-text" class="line-text">
+                    <button onclick="onCycleLine()" id="switch-line" class="switch-line">Switch</button>
+                    <!-- <div class="text-config-bc"></div> -->
+                    <input type="color" name="main-color-picker" id="main-color-picker" class="main-color-picker">
                     <button id="increase-font-size">+</button>
                     <button id="decrease-font-size">-</button>
-                    <button onclick="onCycleLine()" id="switch-line">Switch</button>
                 </div>
             </section>
         </main>

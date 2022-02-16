@@ -1,9 +1,5 @@
 .main-gallery-container {
-    /* margin-top: 3em; */
-    /* background-color: black; */
-    /* overflow-x: scroll; */
     overflow-y: scroll;
-    /* scrollbar-width: thin; */
     gap: 20px;
     padding-top: 10px;
     display: grid;

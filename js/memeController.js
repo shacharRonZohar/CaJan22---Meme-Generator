@@ -1,6 +1,7 @@
 'use strict'
 
 function showMemeEditor(elCanvas, canvasCtx) {
+    document.querySelector('.main-content-container').classList.add('gallery-mode')
     document.querySelector('.main-editor-container').style.display = 'grid'
     resizeCanvas(elCanvas)
     renderMeme(elCanvas, canvasCtx)

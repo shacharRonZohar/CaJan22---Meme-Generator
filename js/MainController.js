@@ -10,6 +10,7 @@ function init() {
 
 function resizeCanvas(elCanvas) {
     const elCanvasContainer = document.querySelector('.main-canvas-container')
+    elCanvasContainer.style.height = `${elCanvasContainer.offsetWidth }px`
     elCanvas.height = elCanvas.width = elCanvasContainer.offsetWidth
 }
 
