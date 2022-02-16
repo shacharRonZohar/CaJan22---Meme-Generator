@@ -32,8 +32,14 @@ function flickerClass(selector, className) {
 function setTextInsideParent(containerSelec, itemSelec, val) {
     $(`.${containerSelec}`).find(`.${itemSelec}`).text(val)
 }
+
 Array.prototype.autoSortObj = function(objKey, sortType, isAsc) {
     const sortDir = isAsc ? 1 : -1
     if (typeof(sortType) === 'string') return this.sort((a, b) => a[objKey].toUpperCase().localeCompare(b[objKey].toUpperCase()) * sortDir)
     else if (typeof(sortType) === 'number') return this.sort((a, b) => a[objKey] - b[objKey] * sortDir)
+}
+
+// Canvas
+function renderImgOnCanvas(img, elCanvas) {
+    gCtx.drawImage(img, 0, 0, elCanvas.width, elCanvas.height);
 }

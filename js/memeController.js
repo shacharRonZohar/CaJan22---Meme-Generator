@@ -8,18 +8,38 @@ function init() {
     resizeCanvas(elCanvas)
 }
 
+function renderMeme() {
 
-function renderCanvas(elCanvas, canvasCtx) {
-    canvasCtx.save()
-    canvasCtx.fillStyle = "red"
-    canvasCtx.fillRect(0, 0, elCanvas.width, elCanvas.height)
-        // renderCircle()
-    canvasCtx.restore()
+}
+
+// function renderCanvas(elCanvas, canvasCtx) {
+//     canvasCtx.save()
+//     canvasCtx.fillStyle = "red"
+//     canvasCtx.fillRect(0, 0, elCanvas.width, elCanvas.height)
+//     canvasCtx.restore()
+// }
+
+function onImgInput() {
+    loadImageToCanvas(src, renderImgOnCanvas)
+}
+
+function loadImageToCanvas(src, onImageReady) {
+    // document.querySelector('.share-container').innerHTML = ''
+    // var reader = new FileReader()
+
+    // reader.onload = function(event) {
+    console.log('onload');
+    var img = new Image()
+        // Render on canvas
+    img.onload = onImageReady.bind(null, img)
+    img.src = src
+        // gImg = img
+        // }
+    console.log('after');
+    // reader.readAsDataURL(ev.target.files[0])
 }
 
 function resizeCanvas(elCanvas) {
-    // console.log('elCanvas', elCanvas)
-
     const elCanvasContainer = document.querySelector('.main-canvas-container')
     elCanvas.height = elCanvasContainer.offsetHeight
     elCanvas.width = elCanvasContainer.offsetWidth
