@@ -7,7 +7,7 @@ function init() {
     const canvasCtx = document.querySelector('#main-canvas').getContext('2d')
     _addEventListeners(elCanvas, canvasCtx)
     resizeCanvas(elCanvas)
-    renderMeme(elCanvas, canvasCtx)
+    renderGallery()
 }
 
 function resizeCanvas(elCanvas) {

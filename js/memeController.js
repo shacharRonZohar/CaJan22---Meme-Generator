@@ -6,8 +6,6 @@ function renderMeme(elCanvas, canvasCtx) {
 }
 
 function loadImageToCanvas(meme, elCanvas, canvasCtx) {
-
-
     // Render on canvas
     var img = new Image()
     img.onload = renderImgOnCanvas.bind(null, img, elCanvas, canvasCtx, meme)

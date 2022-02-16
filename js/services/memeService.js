@@ -1,5 +1,5 @@
 'use strict'
-
+var gImgs = [{ id: 1, keywords: ['funny', 'cat'] }];
 var gMeme = {
     selectedImgId: 5,
     selectedLineIdx: 0,
@@ -10,6 +10,10 @@ var gMeme = {
         align: 'center',
         color: 'red'
     }]
+}
+
+function getImgs() {
+    return gImgs
 }
 
 function getMeme() {
