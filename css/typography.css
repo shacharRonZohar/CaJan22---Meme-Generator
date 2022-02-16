@@ -1,0 +1,9 @@
+@font-face {
+    font-family: mary-l;
+    src: url(/assets/fonts/poppins/Poppins-Light.ttf);
+}
+
+@font-face {
+    font-family: mary-r;
+    src: url(/assets/fonts/poppins/Poppins-Regular.ttf);
+}

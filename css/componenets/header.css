@@ -17,4 +17,9 @@ header nav {
 
 header ul {
     display: flex;
+    justify-content: space-between;
+}
+
+header li:first-child a {
+    margin-inline-end: 40px;
 }
