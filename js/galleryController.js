@@ -13,5 +13,6 @@ function renderGallery() {
 function onImgClicked(id) {
     console.log('id', id)
     document.querySelector('.main-gallery-container').style.display = 'none'
+    document.querySelector('.main-gallery-nav').style.display = 'none'
     setMemeImg(id)
 }

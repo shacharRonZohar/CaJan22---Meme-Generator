@@ -8,3 +8,9 @@
     max-width: 1260px;
     margin: 0 auto;
 }
+
+@media (max-width:1340px) {
+    .main-layout {
+        max-width: 1000px;
+    }
+}
