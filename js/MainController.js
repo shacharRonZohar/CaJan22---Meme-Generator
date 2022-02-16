@@ -13,7 +13,6 @@ function resizeCanvas(elCanvas) {
     elCanvas.height = elCanvasContainer.offsetHeight
     elCanvas.width = elCanvasContainer.offsetWidth
     console.log('elContainer.offsetWidth', elCanvasContainer.offsetWidth)
-
 }
 
 function _setInitElVisibility() {
