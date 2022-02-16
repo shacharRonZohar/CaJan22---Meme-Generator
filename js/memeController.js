@@ -25,23 +25,23 @@ function loadImageToCanvas(meme, elCanvas, canvasCtx) {
 
 function renderImgOnCanvas(img, elCanvas, ctx, { lines }) {
     ctx.drawImage(img, 0, 0, elCanvas.width, elCanvas.height);
-    // const initPos = {
-    //     x: 100,
-    //     y: 100
-    // }
     lines.forEach(line => {
-            drawText(ctx, line, { x: elCanvas.width / 2, y: 100 })
-        })
-        // drawText(ctx, 'Test', initPos)
+        drawText(ctx, line, { x: elCanvas.width / 2, y: 100 })
+    })
 }
 
 
-function drawText(canvasCtx, { size, align, color, txt }, { x, y }) {
-    canvasCtx.font = '48px serif';
-    canvasCtx.lineWidth = size;
-    canvasCtx.textAlign = align;
-    canvasCtx.fillStyle = color;
-    canvasCtx.fillText(txt, x, y);
+function drawText(canvasCtx, { size, fontSize, align, color, txt }, { x, y }) {
+    console.log('fontSize', fontSize)
+    const currFont = `${fontSize}px serif`
+    canvasCtx.font = currFont
+
+    console.log('canvasCtx.font', canvasCtx.font)
+
+    canvasCtx.lineWidth = size
+    canvasCtx.textAlign = align
+    canvasCtx.fillStyle = color
+    canvasCtx.fillText(txt, x, y)
 }
 
 function resizeCanvas(elCanvas) {

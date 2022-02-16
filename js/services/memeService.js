@@ -6,6 +6,7 @@ var gMeme = {
     lines: [{
         txt: 'I sometimes eat Falafel',
         size: 20,
+        fontSize: 48,
         align: 'left',
         color: 'red'
     }]
