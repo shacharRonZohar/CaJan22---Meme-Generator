@@ -14,35 +14,18 @@ function renderMeme(elCanvas, canvasCtx) {
 
 }
 
-// function renderCanvas(elCanvas, canvasCtx) {
-//     canvasCtx.save()
-//     canvasCtx.fillStyle = "red"
-//     canvasCtx.fillRect(0, 0, elCanvas.width, elCanvas.height)
-//     canvasCtx.restore()
-// }
 
 function onImgInput() {
 
 }
 
 function loadImageToCanvas(src, onImageReady, elCanvas, canvasCtx) {
-    // console.log('src', src)
-    // console.log('onImageReady', onImageReady)
-    // console.log('canvasCtx', canvasCtx)
 
-    // document.querySelector('.share-container').innerHTML = ''
-    // var reader = new FileReader()
-
-    // reader.onload = function(event) {
-    // console.log('onload');
+    // Render on canvas
     var img = new Image()
-        // Render on canvas
     img.onload = onImageReady.bind(null, img, elCanvas, canvasCtx)
     img.src = src
-        // gImg = img
-        // }
-        // console.log('after');
-        // reader.readAsDataURL(ev.target.files[0])
+
 }
 
 function resizeCanvas(elCanvas) {
