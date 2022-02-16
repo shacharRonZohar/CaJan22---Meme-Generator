@@ -1,5 +1,9 @@
-.main-grid-container {
-    display: grid;
+.main-flex-container {
+    display: flex;
     height: 100vh;
-    grid-template: repeat(20, 1fr) / repeat(20, 1fr);
+    /* grid-template: repeat(20, 1fr) / repeat(20, 1fr); */
+}
+
+.main-flex-container .main-layout {
+    max-width: 1260px;
 }
