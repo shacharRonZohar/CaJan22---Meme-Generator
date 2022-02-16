@@ -1,10 +1,13 @@
 'use strict'
-var gImgs = [{ id: 1, keywords: ['funny', 'cat'] }];
+var gImgs = [{ id: 1, keywords: ['funny', 'cat'] },
+    { id: 2, keywords: ['funny', 'cat'] },
+
+];
 var gMeme = {
     selectedImgId: 5,
     selectedLineIdx: 0,
     lines: [{
-        txt: '',
+        txt: 'Enter your text here',
         size: 20,
         fontSize: 48,
         align: 'center',
@@ -28,4 +31,13 @@ function setMemeImg(id) {
 
 function setLineTxt(txt) {
     gMeme.lines[0].txt = txt
+}
+
+function setTxtMainColor(color) {
+    gMeme.lines[0].color = color
+}
+
+// Changers
+function changeFontSize(diff) {
+    gMeme.lines[0]
 }
