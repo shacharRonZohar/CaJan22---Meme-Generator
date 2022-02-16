@@ -32,12 +32,8 @@ function renderImgOnCanvas(img, elCanvas, ctx, { lines }) {
 
 
 function drawText(canvasCtx, { size, fontSize, align, color, txt }, { x, y }) {
-    console.log('fontSize', fontSize)
     const currFont = `${fontSize}px serif`
     canvasCtx.font = currFont
-
-    console.log('canvasCtx.font', canvasCtx.font)
-
     canvasCtx.lineWidth = size
     canvasCtx.textAlign = align
     canvasCtx.fillStyle = color
