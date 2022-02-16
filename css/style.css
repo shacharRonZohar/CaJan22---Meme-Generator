@@ -2,3 +2,8 @@
 
 @import url(base/main.css);
 @import url(base/layout.css);
+
+/* Components */
+
+@import url(componenets/main-editor/main-editor-container.css);
+@import url(componenets/main-editor/main-canvas-container.css);

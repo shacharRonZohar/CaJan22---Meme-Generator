@@ -1,5 +1,5 @@
 .main-grid-container {
     display: grid;
-    min-height: 100vh;
+    height: 100vh;
     grid-template: repeat(20, 1fr) / repeat(20, 1fr);
 }

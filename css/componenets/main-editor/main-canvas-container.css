@@ -1,0 +1,3 @@
+.main-canvas-container {
+    grid-area: 1 / 1 / span 10 / span 5;
+}

@@ -10,9 +10,14 @@
 </head>
 
 <body onload="init()">
-    <main class="main-grid-container"></main>
-    <section class="main-gallery-container"></section>
-    <section class="main-editor-container"></section>
+    <main class="main-grid-container">
+        <section class="main-gallery-container"></section>
+        <section class="main-editor-container">
+            <div class="main-canvas-container">
+                <canvas id="main-canvas"></canvas>
+            </div>
+        </section>
+    </main>
     <script src="js/services/storageService.js"></script>
     <script src="js/services/uploadService.js"></script>
     <script src="js/services/utilService.js"></script>
