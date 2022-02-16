@@ -1,5 +1,6 @@
 .main-gallery-nav {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-between;
 }
@@ -26,4 +27,10 @@
 .main-gallery-nav .input-search,
 .main-gallery-nav .input-search::placeholder {
     color: var(--clr6);
+}
+
+@media (min-width:750px) {
+    .main-gallery-nav {
+        flex-direction: row;
+    }
 }

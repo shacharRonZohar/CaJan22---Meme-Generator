@@ -2,7 +2,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 40px;
+    margin-top: 40px!important;
     border-radius: 55px;
     font-family: mary-m, sans-serif;
     font-size: 1.375rem;
@@ -10,7 +10,6 @@ header {
     text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.63);
     color: #FFF;
     padding: 10px 50px;
-    height: 100px;
 }
 
 header .logo {
@@ -18,15 +17,8 @@ header .logo {
 }
 
 header nav {
-    /* display: flex; */
-    /* width: 100%; */
     justify-content: space-between;
 }
-
-
-/* header nav :first-child {
-    margin-inline-start: 80px;
-} */
 
 header ul {
     display: flex;
@@ -35,4 +27,16 @@ header ul {
 
 header li:first-child a {
     margin-inline-end: 40px;
+}
+
+@media (min-width:750px) {
+    header {
+        height: 70px;
+    }
+}
+
+@media (min-width:950px) {
+    header {
+        height: 100px;
+    }
 }

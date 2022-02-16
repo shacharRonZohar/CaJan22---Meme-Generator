@@ -7,11 +7,17 @@
     box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.61);
     border-radius: 15px;
     background-color: var(--clr4);
-    padding: 10px 60px;
+    padding: 10px 20px;
 }
 
 .main-content-container>* {
     grid-column: span 10;
+}
+
+@media (min-width:740px) {
+    .main-content-container {
+        padding: 10px 60px;
+    }
 }
 
 
