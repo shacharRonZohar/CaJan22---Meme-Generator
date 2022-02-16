@@ -10,38 +10,38 @@ function init() {
 
 function renderMeme(elCanvas, canvasCtx) {
     const meme = getMeme()
-    loadImageToCanvas(_getMemeParams(meme), elCanvas, canvasCtx)
+    loadImageToCanvas(meme, elCanvas, canvasCtx)
 }
 
-function loadImageToCanvas({ src }, elCanvas, canvasCtx) {
+function loadImageToCanvas(meme, elCanvas, canvasCtx) {
 
 
     // Render on canvas
     var img = new Image()
-    img.onload = renderImgOnCanvas.bind(null, img, elCanvas, canvasCtx)
-    img.src = src
+    img.onload = renderImgOnCanvas.bind(null, img, elCanvas, canvasCtx, meme)
+    img.src = `assets/meme-imgs/${meme.selectedImgId}.jpg`
 
 }
 
-function renderImgOnCanvas(img, elCanvas, ctx) {
+function renderImgOnCanvas(img, elCanvas, ctx, { lines }) {
     ctx.drawImage(img, 0, 0, elCanvas.width, elCanvas.height);
-    const initPos = {
-        x: 100,
-        y: 100
-    }
-    drawText(ctx, 'Test', initPos)
+    // const initPos = {
+    //     x: 100,
+    //     y: 100
+    // }
+    lines.forEach(line => {
+            drawText(ctx, line, { x: elCanvas.width / 2, y: 100 })
+        })
+        // drawText(ctx, 'Test', initPos)
 }
 
 
-function drawText(canvasCtx, text, { x, y }) {
+function drawText(canvasCtx, { size, align, color, txt }, { x, y }) {
     canvasCtx.font = '48px serif';
-    canvasCtx.fillText(text, x, y);
-    // canvasCtx.lineWidth = 10;
-    // canvasCtx.strokeStyle = 'brown';
-    // canvasCtx.fillStyle = 'black';
-    // canvasCtx.font = '20px Arial';
-    // canvasCtx.fillText(text, x, y);
-    // canvasCtx.strokeText(text, x, y);
+    canvasCtx.lineWidth = size;
+    canvasCtx.textAlign = align;
+    canvasCtx.fillStyle = color;
+    canvasCtx.fillText(txt, x, y);
 }
 
 function resizeCanvas(elCanvas) {
@@ -54,6 +54,7 @@ function _getMemeParams(meme) {
     console.log('meme', meme)
     return {
         src: `assets/meme-imgs/${meme.selectedImgId}.jpg`,
+        lines: meme.lines
     }
 }
 
