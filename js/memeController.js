@@ -7,14 +7,11 @@ function showMemeEditor(elCanvas, canvasCtx) {
 }
 
 function renderMeme(elCanvas, canvasCtx) {
-    console.log('elCanvas', canvasCtx)
     const meme = getMeme()
     loadImageToCanvas(meme, elCanvas, canvasCtx)
 }
 
 function loadImageToCanvas(meme, elCanvas, canvasCtx) {
-    // console.log('meme', meme)
-
     // Render on canvas
     var img = new Image()
     img.onload = renderImgOnCanvas.bind(null, img, elCanvas, canvasCtx, meme)
@@ -25,7 +22,10 @@ function loadImageToCanvas(meme, elCanvas, canvasCtx) {
 function renderImgOnCanvas(img, elCanvas, ctx, { lines }) {
     ctx.drawImage(img, 0, 0, elCanvas.width, elCanvas.height);
     lines.forEach((line, currIdx) => {
-        drawText(ctx, line, { x: elCanvas.width / 2, y: 100 * (currIdx + 1) })
+        var currLineY = elCanvas.height / 2
+        if (!currIdx) currLineY = 100
+        else if (currIdx === 1) currLineY = elCanvas.height - 100
+        drawText(ctx, line, { x: elCanvas.width / 2, y: currLineY })
     })
 }
 

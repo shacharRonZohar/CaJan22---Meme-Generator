@@ -51,7 +51,5 @@ function changeFontSize(diff) {
 }
 
 function cycleLine() {
-    gMeme.selectedLineIdx++
-        if (gMeme.selectedLineIdx >= gMeme.lines.length) console.log('oops')
-
+    (gMeme.selectedLineIdx >= gMeme.lines.length - 1) ? gMeme.selectedLineIdx = 0: gMeme.selectedLineIdx++
 }

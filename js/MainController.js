@@ -1,7 +1,6 @@
 'use strict'
 
 function init() {
-    console.log('1')
     _setInitElVisibility()
     const elCanvas = document.querySelector('#main-canvas')
     const canvasCtx = document.querySelector('#main-canvas').getContext('2d')
@@ -12,11 +11,7 @@ function init() {
 function resizeCanvas(elCanvas) {
     const elCanvasContainer = document.querySelector('.main-canvas-container')
     elCanvas.height = elCanvasContainer.offsetHeight
-    console.log('elCanvasContainer.offsetWidth', elCanvasContainer.offsetHeight)
-
     elCanvas.width = elCanvasContainer.offsetWidth
-        // console.log('elCanvas.width', elCanvas.width)
-
 }
 
 function _setInitElVisibility() {
@@ -48,7 +43,6 @@ function _addMainColorPickerListener(elCanvas, canvasCtx) {
 
 function _addCanvasResizeListener(elCanvas, canvasCtx) {
     window.addEventListener('resize', () => {
-        console.log('resizing')
         resizeCanvas(elCanvas)
         renderMeme(elCanvas, canvasCtx)
     })
