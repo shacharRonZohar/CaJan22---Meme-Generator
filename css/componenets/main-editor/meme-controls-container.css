@@ -15,13 +15,14 @@
     background-repeat: no-repeat;
     background-position: center;
     /* background-size: contain; */
+    background-color: #FFF;
+    border: none;
 }
 
 .meme-controls-container .line-text {
     font-size: 1.5rem;
     padding: 0 15px;
     color: var(--clr6);
-    border: 0;
     border-radius: 100px;
     grid-column: span 5;
 }
@@ -44,7 +45,6 @@
 .meme-controls-container .color-picker-img {
     /* opacity: 0; */
     grid-area: 4/5;
-    background-color: #FFF;
     background-image: url(/assets/icons/color.png);
     /* height: 100%;
     width: 100%; */
@@ -52,13 +52,26 @@
 }
 
 .meme-controls-container .increase-font-size {
-    border: 0;
     grid-area: 3/1;
     background-image: url(/assets/icons/text-inc.png);
 }
 
 .meme-controls-container .decrease-font-size {
-    border: 0;
     grid-area: 3/2;
     background-image: url(/assets/icons/text-dec.png);
+}
+
+.meme-controls-container .text-align-left {
+    grid-area: 3/3;
+    background-image: url(/assets/icons/align-l.png);
+}
+
+.meme-controls-container .text-align-center {
+    grid-area: 3/4;
+    background-image: url(/assets/icons/align-c.png);
+}
+
+.meme-controls-container .text-align-right {
+    grid-area: 3/5;
+    background-image: url(/assets/icons/align-r.png);
 }

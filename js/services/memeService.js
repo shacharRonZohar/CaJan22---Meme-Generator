@@ -73,9 +73,12 @@ function setLineTxt(txt) {
 }
 
 function setTxtMainColor(color) {
-    gMeme.lines[gMeme.selectedLineIdx].color = color
+    gMeme.lines[gMeme.selectedLineIdx].mainColor = color
 }
 
+function setAlign(align) {
+    gMeme.lines[gMeme.selectedLineIdx].align = align
+}
 // Changers
 function changeFontSize(diff) {
     gMeme.lines[gMeme.selectedLineIdx].fontSize += diff

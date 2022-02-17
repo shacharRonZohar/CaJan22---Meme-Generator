@@ -22,20 +22,12 @@ function _addEventListeners(elCanvas, canvasCtx) {
     _addCanvasResizeListener(elCanvas, canvasCtx)
     _addLineInputListener(elCanvas, canvasCtx)
     _addImgsEventListeners(elCanvas, canvasCtx)
-    _addMainColorPickerListener(elCanvas, canvasCtx)
-    _addChangeFontSizeListeners(elCanvas, canvasCtx)
+    _addControlsEventListeners(elCanvas, canvasCtx)
 }
 
 function _addLineInputListener(elCanvas, canvasCtx) {
     document.querySelector('#line-text').addEventListener('input', (ev) => {
         setLineTxt(ev.srcElement.value)
-        renderMeme(elCanvas, canvasCtx)
-    })
-}
-
-function _addMainColorPickerListener(elCanvas, canvasCtx) {
-    document.querySelector('#main-color-picker').addEventListener('input', (ev) => {
-        setTxtMainColor(ev.srcElement.value)
         renderMeme(elCanvas, canvasCtx)
     })
 }
@@ -48,6 +40,7 @@ function _addCanvasResizeListener(elCanvas, canvasCtx) {
 }
 
 function _addImgsEventListeners(elCanvas, canvasCtx) {
+    // Opens the gallery when an img is pressed
     const elGallery = document.querySelector('.main-gallery-container')
     elGallery.querySelectorAll('img').forEach(img => {
         img.addEventListener('click', () => {
@@ -56,11 +49,34 @@ function _addImgsEventListeners(elCanvas, canvasCtx) {
     })
 }
 
+function _addControlsEventListeners(elCanvas, canvasCtx) {
+    _addMainColorPickerListener(elCanvas, canvasCtx)
+        // _addChangeFontSizeListeners(elCanvas, canvasCtx)
+        // _addChangeAlignListeners(elCanvas, canvasCtx)
+}
+
+function _addMainColorPickerListener(elCanvas, canvasCtx) {
+    document.querySelector('#main-color-picker').addEventListener('input', (ev) => {
+        setTxtMainColor(ev.srcElement.value)
+        renderMeme(elCanvas, canvasCtx)
+    })
+}
+
 function _addChangeFontSizeListeners(elCanvas, canvasCtx) {
     document.querySelector('.increase-font-size').addEventListener('click', () => {
         onChangeFontSize(1, elCanvas, canvasCtx, )
+        renderMeme(elCanvas, canvasCtx)
     })
     document.querySelector('.decrease-font-size').addEventListener('click', () => {
         onChangeFontSize(-1, elCanvas, canvasCtx, )
+    })
+}
+
+function _addChangeAlignListeners(elCanvas, canvasCtx) {
+    const opts = ['right', 'center', 'left']
+    document.querySelectorAll('.text-align').forEach(() => {
+        addEventListener('click', () => {
+            onSetAlign(elCanvas, canvasCtx, opts.pop())
+        })
     })
 }
