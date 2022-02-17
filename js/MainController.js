@@ -1,5 +1,9 @@
 'use strict'
 
+// TODO: Possible fix for making canvas dynamic:
+// Making TONS of media queries and forcing the canvas container
+// to a specific valid height and width
+
 function init() {
     _setInitElVisibility()
     const elCanvas = document.querySelector('#main-canvas')
@@ -20,9 +24,17 @@ function _setInitElVisibility() {
 
 function _addEventListeners(elCanvas, canvasCtx) {
     _addCanvasResizeListener(elCanvas, canvasCtx)
+    _addCanvasClickListener(elCanvas, canvasCtx)
+    _addChangeLineListener(elCanvas, canvasCtx)
     _addLineInputListener(elCanvas, canvasCtx)
     _addImgsEventListeners(elCanvas, canvasCtx)
     _addControlsEventListeners(elCanvas, canvasCtx)
+}
+
+function _addCanvasClickListener(elCanvas, canvasCtx) {
+    elCanvas.addEventListener('click', (ev) => {
+        onCanvasClick(elCanvas, canvasCtx, ev)
+    })
 }
 
 function _addLineInputListener(elCanvas, canvasCtx) {
@@ -36,6 +48,12 @@ function _addCanvasResizeListener(elCanvas, canvasCtx) {
     window.addEventListener('resize', () => {
         resizeCanvas(elCanvas)
         renderMeme(elCanvas, canvasCtx)
+    })
+}
+
+function _addChangeLineListener(elCanvas, canvasCtx) {
+    document.querySelector('.switch-line').addEventListener('click', () => {
+        onCycleLine(elCanvas, canvasCtx)
     })
 }
 
@@ -78,7 +96,7 @@ function _addChangeAlignListeners(elCanvas, canvasCtx) {
     const opts = ['left', 'center', 'right']
     document.querySelectorAll('.text-align').forEach((currBtn, currIdx) => {
         currBtn.addEventListener('click', () => {
-            console.log('opts[currIdx', opts[currIdx])
+            // console.log('opts[currIdx', opts[currIdx])
 
             onSetAlign(elCanvas, canvasCtx, opts[currIdx])
         })
@@ -92,7 +110,7 @@ function _addChangeFontListener(elCanvas, canvasCtx) {
 }
 
 function _addMoveTextListeners(elCanvas, canvasCtx) {
-    console.log('document.querySelector()', document.querySelector('.move-text-up'))
+    // console.log('document.querySelector()', document.querySelector('.move-text-up'))
 
     document.querySelector('.move-text-up').addEventListener('click', () => {
         onMoveText(elCanvas, canvasCtx, -5)

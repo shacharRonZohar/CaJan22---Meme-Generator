@@ -76,8 +76,14 @@ function getCurrLineIdx() {
 }
 
 function getLineRectParams(idx) {
+    // console.log('idx', idx)
     return gMeme.lines[idx].textRectParams
 }
+
+function getLineAlign(idx) {
+    return gMeme.lines[idx].align
+}
+
 // Setters
 function setMemeImg(id) {
     gMeme.selectedImgId = id
@@ -103,24 +109,43 @@ function setTextY(diff) {
     gMeme.lines[gMeme.selectedLineIdx].pos.y += diff
 }
 
-function setTextRectParams(params) {
-    gMeme.lines[gMeme.selectedLineIdx].textRectParams = params
-    setTextRectCoords(params)
+function setTextRectParams(lineIdx, params) {
+    gMeme.lines[lineIdx].textRectParams = params
+    gMeme.lines[lineIdx].textRectCoords = params
+        // setTextRectCoords(lineIdx, params)
 }
 
-function setTextRectCoords({ rectStartX, rectEndX, rectStartY, rectEndY }) {
-    gMeme.lines[gMeme.selectedLineIdx].textRectCoords = {
-        rectStartX,
-        rectEndX: rectStartX + rectEndX,
-        rectStartY,
-        rectEndY: rectStartY + rectEndY
-    }
-}
+// function setTextRectCoords(lineIdx, { rectStartX, rectEndX, rectStartY, rectEndY }) {
+//     gMeme.lines[lineIdx].textRectCoords = {
+//         rectStartX,
+//         rectEndX,
+//         rectStartY,
+//         rectEndY
+//     }
+// }
+
 // Changers
 function changeFontSize(diff) {
     gMeme.lines[gMeme.selectedLineIdx].fontSize += diff
 }
 
 function cycleLine() {
-    (gMeme.selectedLineIdx >= gMeme.lines.length - 1) ? gMeme.selectedLineIdx = 0: gMeme.selectedLineIdx++
+    return (gMeme.selectedLineIdx >= gMeme.lines.length - 1) ? gMeme.selectedLineIdx = 0 : ++gMeme.selectedLineIdx
+}
+
+// Checkers
+
+function isLineClicked({ x, y }) {
+    // console.log('x', x)
+    // console.log('y', y)
+    gMeme.lines.forEach(({ textRectCoords }) => {
+        // console.log('textRectCoords', textRectCoords)
+
+        if (x >= textRectCoords.rectStartX && x <= textRectCoords.rectEndX &&
+            y >= textRectCoords.rectStartY && y <= textRectCoords.rectEndY) {
+            console.log('x', x)
+
+        }
+    })
+
 }

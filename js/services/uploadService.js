@@ -1,11 +1,10 @@
-
 function uploadImg() {
     const imgDataUrl = gElCanvas.toDataURL("image/jpeg");
 
     // A function to be called if request succeeds
     function onSuccess(uploadedImgUrl) {
         const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
-        console.log(encodedUploadedImgUrl);
+            // console.log(encodedUploadedImgUrl);
         document.querySelector('.user-msg').innerText = `Your photo is available here: ${uploadedImgUrl}`
 
         document.querySelector('.share-container').innerHTML = `
@@ -13,7 +12,7 @@ function uploadImg() {
            Share   
         </a>`
     }
-    
+
     doUploadImg(imgDataUrl, onSuccess);
 }
 
@@ -23,19 +22,15 @@ function doUploadImg(imgDataUrl, onSuccess) {
     formData.append('img', imgDataUrl)
 
     fetch('//ca-upload.com/here/upload.php', {
-        method: 'POST',
-        body: formData
-    })
-    .then(res => res.text())
-    .then((url)=>{
-        console.log('Got back live url:', url);
-        onSuccess(url)
-    })
-    .catch((err) => {
-        console.error(err)
-    })
+            method: 'POST',
+            body: formData
+        })
+        .then(res => res.text())
+        .then((url) => {
+            // console.log('Got back live url:', url);
+            onSuccess(url)
+        })
+        .catch((err) => {
+            console.error(err)
+        })
 }
-
-
-
-

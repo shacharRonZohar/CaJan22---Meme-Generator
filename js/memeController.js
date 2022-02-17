@@ -28,15 +28,20 @@ function renderImgOnCanvas(img, elCanvas, ctx, { lines }) {
             if (!currIdx) line.pos.y = 100
             else if (currIdx === 1) line.pos.y = elCanvas.height - 100
         }
-        drawText(elCanvas, ctx, line, line.pos)
+        drawText(currIdx, elCanvas, ctx, line, line.pos)
         if (currIdx === getCurrLineIdx()) {
             drawRectAroundText(getLineRectParams(currIdx))
         }
     })
 }
 
-function onCycleLine() {
+function onCycleLine(elCanvas, canvasCtx) {
     cycleLine()
+    renderMeme(elCanvas, canvasCtx)
+}
+
+function onCanvasClick(elCanvas, canvasCtx, ev) {
+    isLineClicked(ev)
 }
 
 function onChangeFontSize(diff, elCanvas, canvasCtx) {
@@ -59,7 +64,7 @@ function onMoveText(elCanvas, canvasCtx, diff) {
     renderMeme(elCanvas, canvasCtx)
 }
 
-function drawText(elCanvas, canvasCtx, { size, font, fontSize, align, mainColor, secndColor, txt, pos }) {
+function drawText(currIdx, elCanvas, canvasCtx, { size, font, fontSize, align, mainColor, secndColor, txt, pos }) {
     pos.x = _getCoordX(elCanvas, align)
     const currFont = `${fontSize}px ${font}`
     canvasCtx.font = currFont
@@ -71,12 +76,10 @@ function drawText(elCanvas, canvasCtx, { size, font, fontSize, align, mainColor,
     canvasCtx.fillText(txt, pos.x, pos.y)
     canvasCtx.strokeStyle = secndColor
     canvasCtx.strokeText(txt, pos.x, pos.y)
-    onSetTextRectParams(elCanvas, canvasCtx, txt, pos, fontSize)
+    onSetTextRectParams(currIdx, elCanvas, canvasCtx, txt, pos, fontSize)
 }
 
-function onSetTextRectParams(elCanvas, canvasCtx, txt, pos, fontSize) {
-    console.log('canvasCtx', canvasCtx)
-
+function onSetTextRectParams(currIdx, elCanvas, canvasCtx, txt, pos, fontSize) {
     const textWidth = canvasCtx.measureText(txt).width
     const params = {
         elCanvas,
@@ -86,14 +89,21 @@ function onSetTextRectParams(elCanvas, canvasCtx, txt, pos, fontSize) {
         rectStartY: pos.y - 5,
         rectEndY: fontSize * 1.286 + 5,
     }
-    setTextRectParams(params)
+    const currLineAlign = getLineAlign(currIdx)
+    if (currLineAlign === 'left') {
+        params.rectStartX = 10
+    } else if (currLineAlign === 'right') {
+        params.rectStartX = elCanvas.width - textWidth - 10
+    }
+    setTextRectParams(currIdx, params)
 }
 
 function drawRectAroundText({ elCanvas, canvasCtx, rectStartX, rectStartY, rectEndX, rectEndY }) {
+
     //Handeling of Rect
     canvasCtx.strokeStyle = 'black'
     canvasCtx.strokeRect(rectStartX, rectStartY, rectEndX, rectEndY)
-    renderMeme(elCanvas, canvasCtx)
+        // renderMeme(elCanvas, canvasCtx)
 }
 
 function _getCoordX(elCanvas, align) {
