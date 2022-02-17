@@ -41,8 +41,8 @@ function onChangeFontSize(diff, elCanvas, canvasCtx) {
     renderMeme(elCanvas, canvasCtx)
 }
 
-function drawText(canvasCtx, { size, fontSize, align, mainColor, secndColor, txt }, { x, y }) {
-    const currFont = `${fontSize}px serif`
+function drawText(canvasCtx, { size, font, fontSize, align, mainColor, secndColor, txt }, { x, y }) {
+    const currFont = `${fontSize}px ${font}`
     canvasCtx.font = currFont
     canvasCtx.lineWidth = size / 10
     canvasCtx.textAlign = align

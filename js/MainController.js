@@ -58,10 +58,10 @@ function _addImgsEventListeners(elCanvas, canvasCtx) {
 }
 
 function _addChangeFontSizeListeners(elCanvas, canvasCtx) {
-    document.querySelector('#increase-font-size').addEventListener('click', () => {
+    document.querySelector('.increase-font-size').addEventListener('click', () => {
         onChangeFontSize(1, elCanvas, canvasCtx, )
     })
-    document.querySelector('#decrease-font-size').addEventListener('click', () => {
+    document.querySelector('.decrease-font-size').addEventListener('click', () => {
         onChangeFontSize(-1, elCanvas, canvasCtx, )
     })
 }

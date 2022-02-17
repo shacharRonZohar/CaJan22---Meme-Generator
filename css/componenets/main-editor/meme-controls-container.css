@@ -10,10 +10,16 @@
     border-radius: 20px;
 }
 
+.meme-controls-container>*:not(.main-color-picker) {
+    margin: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* background-size: contain; */
+}
+
 .meme-controls-container .line-text {
     font-size: 1.5rem;
     padding: 0 15px;
-    margin: 20px;
     color: var(--clr6);
     border: 0;
     border-radius: 100px;
@@ -30,11 +36,29 @@
 } */
 
 .meme-controls-container .main-color-picker {
-    background-color: inherit;
-    border-radius: 20px;
-    align-self: center;
-    justify-self: center;
-    grid-area: 4 / 5;
-    height: 80%;
-    width: 80%;
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.meme-controls-container .color-picker-img {
+    /* opacity: 0; */
+    grid-area: 4/5;
+    background-color: #FFF;
+    background-image: url(/assets/icons/color.png);
+    /* height: 100%;
+    width: 100%; */
+    /* back */
+}
+
+.meme-controls-container .increase-font-size {
+    border: 0;
+    grid-area: 3/1;
+    background-image: url(/assets/icons/text-inc.png);
+}
+
+.meme-controls-container .decrease-font-size {
+    border: 0;
+    grid-area: 3/2;
+    background-image: url(/assets/icons/text-dec.png);
 }
