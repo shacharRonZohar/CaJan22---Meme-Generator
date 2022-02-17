@@ -21,14 +21,19 @@ function loadImageToCanvas(meme, elCanvas, canvasCtx) {
 }
 
 function renderImgOnCanvas(img, elCanvas, ctx, { lines }) {
+    // BUG: This is an infinite loop for some fucking reason
     ctx.drawImage(img, 0, 0, elCanvas.width, elCanvas.height);
+    console.log('Infinity')
+        // console.log('lines.length', lines.length)
+
     lines.forEach((line, currIdx) => {
         if (!line.pos.y) {
             line.pos.y = elCanvas.height / 2
             if (!currIdx) line.pos.y = 100
             else if (currIdx === 1) line.pos.y = elCanvas.height - 100
         }
-        drawText(elCanvas, ctx, line, line.pos)
+
+        // drawText(elCanvas, ctx, line, line.pos)
         if (currIdx === getCurrLineIdx()) {
             drawRectAroundText(getLineRectParams(currIdx))
         }
@@ -75,7 +80,7 @@ function drawText(elCanvas, canvasCtx, { size, font, fontSize, align, mainColor,
 }
 
 function onSetTextRectParams(elCanvas, canvasCtx, txt, pos, fontSize) {
-    console.log('canvasCtx', canvasCtx)
+    // console.log('canvasCtx', canvasCtx)
 
     const textWidth = canvasCtx.measureText(txt).width
     const params = {

@@ -20,6 +20,7 @@ function _setInitElVisibility() {
 
 function _addEventListeners(elCanvas, canvasCtx) {
     _addCanvasResizeListener(elCanvas, canvasCtx)
+    _addCanvasClickListener(elCanvas, canvasCtx)
     _addLineInputListener(elCanvas, canvasCtx)
     _addImgsEventListeners(elCanvas, canvasCtx)
     _addControlsEventListeners(elCanvas, canvasCtx)
@@ -36,6 +37,13 @@ function _addCanvasResizeListener(elCanvas, canvasCtx) {
     window.addEventListener('resize', () => {
         resizeCanvas(elCanvas)
         renderMeme(elCanvas, canvasCtx)
+    })
+}
+
+function _addCanvasClickListener(elCanvas, canvasCtx) {
+    elCanvas.addEventListener('click', (ev) => {
+        console.log('ev', ev)
+
     })
 }
 
