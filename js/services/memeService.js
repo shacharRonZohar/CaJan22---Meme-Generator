@@ -79,6 +79,10 @@ function setTxtMainColor(color) {
 function setAlign(align) {
     gMeme.lines[gMeme.selectedLineIdx].align = align
 }
+
+function setFont(font) {
+    gMeme.lines[gMeme.selectedLineIdx].font = font
+}
 // Changers
 function changeFontSize(diff) {
     gMeme.lines[gMeme.selectedLineIdx].fontSize += diff

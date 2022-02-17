@@ -51,8 +51,9 @@ function _addImgsEventListeners(elCanvas, canvasCtx) {
 
 function _addControlsEventListeners(elCanvas, canvasCtx) {
     _addMainColorPickerListener(elCanvas, canvasCtx)
-        // _addChangeFontSizeListeners(elCanvas, canvasCtx)
-        // _addChangeAlignListeners(elCanvas, canvasCtx)
+    _addChangeFontSizeListeners(elCanvas, canvasCtx)
+    _addChangeAlignListeners(elCanvas, canvasCtx)
+    _addChangeFontListener(elCanvas, canvasCtx)
 }
 
 function _addMainColorPickerListener(elCanvas, canvasCtx) {
@@ -73,10 +74,16 @@ function _addChangeFontSizeListeners(elCanvas, canvasCtx) {
 }
 
 function _addChangeAlignListeners(elCanvas, canvasCtx) {
-    const opts = ['right', 'center', 'left']
-    document.querySelectorAll('.text-align').forEach(() => {
-        addEventListener('click', () => {
-            onSetAlign(elCanvas, canvasCtx, opts.pop())
+    const opts = ['left', 'center', 'right']
+    document.querySelectorAll('.text-align').forEach((currBtn, currIdx) => {
+        currBtn.addEventListener('click', () => {
+            onSetAlign(elCanvas, canvasCtx, opts[currIdx])
         })
+    })
+}
+
+function _addChangeFontListener(elCanvas, canvasCtx) {
+    document.querySelector('.font-picker').addEventListener('change', (ev) => {
+        onFontChange(elCanvas, canvasCtx, ev.srcElement.value)
     })
 }

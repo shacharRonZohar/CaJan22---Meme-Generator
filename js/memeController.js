@@ -41,9 +41,14 @@ function onChangeFontSize(diff, elCanvas, canvasCtx) {
     renderMeme(elCanvas, canvasCtx)
 }
 
+function onFontChange(elCanvas, canvasCtx, font) {
+    setFont(font)
+    renderMeme(elCanvas, canvasCtx)
+}
+
 function onSetAlign(elCavnas, canvasCtx, align) {
     setAlign(align)
-        // renderMeme(elCavnas, canvasCtx, align)
+    renderMeme(elCavnas, canvasCtx)
 }
 
 function drawText(elCanvas, canvasCtx, { size, font, fontSize, align, mainColor, secndColor, txt }, y) {
