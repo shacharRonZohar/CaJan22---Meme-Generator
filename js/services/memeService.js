@@ -40,7 +40,11 @@ var gMeme = {
             fontSize: 48,
             align: 'center',
             mainColor: 'white',
-            secndColor: 'black'
+            secndColor: 'black',
+            pos: {
+                x: 0,
+                y: 0
+            }
         },
         {
             txt: 'Enter your text here',
@@ -49,7 +53,11 @@ var gMeme = {
             fontSize: 48,
             align: 'center',
             mainColor: 'white',
-            secndColor: 'black'
+            secndColor: 'black',
+            pos: {
+                x: 0,
+                y: 0
+            }
         },
     ]
 }
@@ -63,6 +71,13 @@ function getMeme() {
     return gMeme
 }
 
+function getCurrLineIdx() {
+    return gMeme.selectedLineIdx
+}
+
+function getLineRectParams(idx) {
+    return gMeme.lines[idx].textRectParams
+}
 // Setters
 function setMemeImg(id) {
     gMeme.selectedImgId = id
@@ -82,6 +97,24 @@ function setAlign(align) {
 
 function setFont(font) {
     gMeme.lines[gMeme.selectedLineIdx].font = font
+}
+
+function setTextY(diff) {
+    gMeme.lines[gMeme.selectedLineIdx].pos.y += diff
+}
+
+function setTextRectParams(params) {
+    gMeme.lines[gMeme.selectedLineIdx].textRectParams = params
+    setTextRectCoords(params)
+}
+
+function setTextRectCoords({ rectStartX, rectEndX, rectStartY, rectEndY }) {
+    gMeme.lines[gMeme.selectedLineIdx].textRectCoords = {
+        rectStartX,
+        rectEndX: rectStartX + rectEndX,
+        rectStartY,
+        rectEndY: rectStartY + rectEndY
+    }
 }
 // Changers
 function changeFontSize(diff) {

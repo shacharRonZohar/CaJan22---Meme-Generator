@@ -54,6 +54,7 @@ function _addControlsEventListeners(elCanvas, canvasCtx) {
     _addChangeFontSizeListeners(elCanvas, canvasCtx)
     _addChangeAlignListeners(elCanvas, canvasCtx)
     _addChangeFontListener(elCanvas, canvasCtx)
+    _addMoveTextListeners(elCanvas, canvasCtx)
 }
 
 function _addMainColorPickerListener(elCanvas, canvasCtx) {
@@ -77,6 +78,8 @@ function _addChangeAlignListeners(elCanvas, canvasCtx) {
     const opts = ['left', 'center', 'right']
     document.querySelectorAll('.text-align').forEach((currBtn, currIdx) => {
         currBtn.addEventListener('click', () => {
+            console.log('opts[currIdx', opts[currIdx])
+
             onSetAlign(elCanvas, canvasCtx, opts[currIdx])
         })
     })
@@ -85,5 +88,16 @@ function _addChangeAlignListeners(elCanvas, canvasCtx) {
 function _addChangeFontListener(elCanvas, canvasCtx) {
     document.querySelector('.font-picker').addEventListener('change', (ev) => {
         onFontChange(elCanvas, canvasCtx, ev.srcElement.value)
+    })
+}
+
+function _addMoveTextListeners(elCanvas, canvasCtx) {
+    console.log('document.querySelector()', document.querySelector('.move-text-up'))
+
+    document.querySelector('.move-text-up').addEventListener('click', () => {
+        onMoveText(elCanvas, canvasCtx, -5)
+    })
+    document.querySelector('.move-text-down').addEventListener('click', () => {
+        onMoveText(elCanvas, canvasCtx, 5)
     })
 }
