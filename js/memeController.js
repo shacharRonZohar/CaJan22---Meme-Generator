@@ -1,7 +1,7 @@
 'use strict'
 
 function showMemeEditor(elCanvas, canvasCtx) {
-    document.querySelector('.main-content-container').classList.add('gallery-mode')
+    document.querySelector('.main-content-container').classList.add('meme-mode')
     document.querySelector('.main-editor-container').style.display = 'grid'
     resizeCanvas(elCanvas)
     renderMeme(elCanvas, canvasCtx)
@@ -26,7 +26,7 @@ function renderImgOnCanvas(img, elCanvas, ctx, { lines }) {
         var currLineY = elCanvas.height / 2
         if (!currIdx) currLineY = 100
         else if (currIdx === 1) currLineY = elCanvas.height - 100
-        drawText(ctx, line, { x: elCanvas.width / 2, y: currLineY })
+        drawText(elCanvas, ctx, line, currLineY)
     })
 }
 
@@ -41,16 +41,26 @@ function onChangeFontSize(diff, elCanvas, canvasCtx) {
     renderMeme(elCanvas, canvasCtx)
 }
 
-function drawText(canvasCtx, { size, font, fontSize, align, mainColor, secndColor, txt }, { x, y }) {
+function drawText(elCanvas, canvasCtx, { size, font, fontSize, align, mainColor, secndColor, txt }, y) {
+    const x = _getCoordX(elCanvas, align)
     const currFont = `${fontSize}px ${font}`
     canvasCtx.font = currFont
     canvasCtx.lineWidth = size / 10
     canvasCtx.textAlign = align
-    console.log('mainColor', mainColor)
-    console.log('secndColor', secndColor)
     canvasCtx.strokeStyle = 'white'
     canvasCtx.fillStyle = mainColor
     canvasCtx.fillText(txt, x, y)
     canvasCtx.strokeStyle = secndColor
     canvasCtx.strokeText(txt, x, y)
+}
+
+function _getCoordX(elCanvas, align) {
+    switch (align) {
+        case 'left':
+            return 10
+        case 'center':
+            return elCanvas.width / 2
+        case 'right':
+            return elCanvas.width - 10
+    }
 }

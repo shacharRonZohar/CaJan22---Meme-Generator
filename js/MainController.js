@@ -18,7 +18,6 @@ function _setInitElVisibility() {
     document.querySelector('.main-editor-container').style.display = 'none'
 }
 
-
 function _addEventListeners(elCanvas, canvasCtx) {
     _addCanvasResizeListener(elCanvas, canvasCtx)
     _addLineInputListener(elCanvas, canvasCtx)
