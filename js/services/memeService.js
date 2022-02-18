@@ -1,4 +1,6 @@
 'use strict'
+const MEMES_STORAGE_KEY = 'memesDb'
+
 var gImgs = [{ id: 1, keywords: ['funny', 'cat'] },
     { id: 2, keywords: ['funny', 'cat'] },
     { id: 3, keywords: ['funny', 'cat'] },
@@ -11,24 +13,6 @@ var gImgs = [{ id: 1, keywords: ['funny', 'cat'] },
     { id: 10, keywords: ['funny', 'cat'] },
 
 ]
-
-const memesSentences = [
-    'I never eat falafel',
-    'DOMS DOMS EVERYWHERE',
-    'Stop Using i in for loops',
-    'Armed in knowledge',
-    'Js error "Unexpected String"',
-    'One does not simply write js',
-    'I`m a simple man, i see vanilla JS, i click like!',
-    'JS, HTML,CSS?? Even my momma can do that',
-    'May the force be with you',
-    'I know JS',
-    'JS Where everything is made up and the rules dont matter',
-    'Not sure if im good at programming or good at googling',
-    'But if we could',
-    'JS what is this?',
-    'Write hello world , add to cv 7 years experienced',
-];
 
 var gMeme = {}
 
@@ -100,6 +84,32 @@ function getLine({ txt, font, fontSize, size, align, mainColor, secndColor, pos 
         secndColor,
         pos
     }
+}
+
+function getRandomTxt() {
+    const memesSentences = [
+        'I never eat falafel',
+        'DOMS DOMS EVERYWHERE',
+        'Stop Using i in for loops',
+        'Armed in knowledge',
+        'Js error "Unexpected String"',
+        'One does not simply write js',
+        'I`m a simple man, i see vanilla JS, i click like!',
+        'JS, HTML,CSS?? Even my momma can do that',
+        'May the force be with you',
+        'I know JS',
+        'JS Where everything is made up and the rules dont matter',
+        'Not sure if im good at programming or good at googling',
+        'But if we could',
+        'JS what is this?',
+        'Write hello world , add to cv 7 years experienced',
+    ]
+    return memesSentences[getRandomInt(0, memesSentences.length)]
+}
+
+function getRandomFont() {
+    const fonts = ['impact', 'arial']
+    return fonts[getRandomInt(0, fonts.length)]
 }
 
 function addLine() {
@@ -179,4 +189,9 @@ function isLineClicked({ x, y }) {
         }
     })
     return isLine
+}
+
+// Storage
+function saveMemeToStorage(data) {
+    saveToStorage(MEMES_STORAGE_KEY, data)
 }

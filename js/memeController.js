@@ -68,6 +68,11 @@ function onSetTxtSecndColor(ev, { elCanvas, canvasCtx }) {
     renderMeme(elCanvas, canvasCtx)
 }
 
+function onSaveMeme({ elCanvas }) {
+    const data = elCanvas.toDataURL('image/png')
+    saveMemeToStorage(data)
+}
+
 function getEvPos(ev) {
     var pos = {
             x: ev.offsetX,

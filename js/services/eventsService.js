@@ -123,6 +123,16 @@ function setEvents(elCanvas, canvasCtx) {
                 canvasCtx
             },
             isSendEv: false
+        }, {
+            id: 11,
+            selec: '.save-meme',
+            evType: 'click',
+            funcToActPoint: onSaveMeme,
+            funcParams: {
+                elCanvas,
+                canvasCtx
+            },
+            isSendEv: false
         }
     ]
 }
