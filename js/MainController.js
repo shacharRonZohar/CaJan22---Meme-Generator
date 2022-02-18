@@ -17,7 +17,8 @@ function onResizeCanvas({ elCanvas, canvasCtx }) {
     const elCanvasContainer = document.querySelector('.main-canvas-container')
     elCanvasContainer.style.height = `${elCanvasContainer.offsetWidth }px`
     elCanvas.height = elCanvas.width = elCanvasContainer.offsetWidth
-    renderMeme(elCanvas, canvasCtx)
+
+    if (getMeme().selectedImgId !== undefined) renderMeme(elCanvas, canvasCtx)
 }
 
 function _setInitElVisibility() {

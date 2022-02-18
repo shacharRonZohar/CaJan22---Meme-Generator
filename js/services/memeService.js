@@ -1,6 +1,6 @@
 'use strict'
 const MEMES_STORAGE_KEY = 'memesDb'
-
+var gUserMemes = []
 var gImgs = [{ id: 1, keywords: ['funny', 'cat'] },
     { id: 2, keywords: ['funny', 'cat'] },
     { id: 3, keywords: ['funny', 'cat'] },
@@ -193,5 +193,6 @@ function isLineClicked({ x, y }) {
 
 // Storage
 function saveMemeToStorage(data) {
-    saveToStorage(MEMES_STORAGE_KEY, data)
+    gUserMemes.push(data)
+    saveToStorage(MEMES_STORAGE_KEY, gUserMemes)
 }

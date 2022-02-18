@@ -10,7 +10,6 @@ function showMemeEditor(elCanvas, canvasCtx, isRandom) {
 
 function renderMeme(elCanvas, canvasCtx, isDownload) {
     const meme = getMeme()
-
     loadImageToCanvas(meme, elCanvas, canvasCtx, isDownload)
 }
 
@@ -24,7 +23,7 @@ function loadImageToCanvas(meme, elCanvas, canvasCtx, isDownload) {
 
 function renderImgOnCanvas(img, elCanvas, ctx, { lines }, isDownload = false) {
     ctx.drawImage(img, 0, 0, elCanvas.width, elCanvas.height)
-    if (!lines) return
+    if (checkIfObjHasEmpty()) return
     lines.forEach((line, currIdx) => {
         if (!line.pos.y) {
             line.pos.y = elCanvas.height / 2
@@ -36,6 +35,10 @@ function renderImgOnCanvas(img, elCanvas, ctx, { lines }, isDownload = false) {
             drawRectAroundText(getLineRectParams(currIdx))
         }
     })
+}
+
+function checkIfObjHasEmpty() {
+
 }
 
 function onCycleLine({ elCanvas, canvasCtx }) {
