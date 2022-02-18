@@ -21,12 +21,13 @@ function onResizeCanvas({ elCanvas, canvasCtx }) {
         getMeme().lines.forEach((line, currIdx) => {
             const fontSize = elCanvasContainer.offsetWidth * 0.08
             setTextFontSize(currIdx, fontSize)
+            resetTxtPosY(currIdx)
         })
     } catch {
         console.log('Caught you Too!')
             // console.log('elCanvasContainer.offsetWidth', elCanvasContainer.offsetWidth)
     } finally {
-        console.log('offsetWidth', elCanvasContainer.offsetWidth)
+        // console.log('offsetWidth', elCanvasContainer.offsetWidth)
 
     }
     if (getMeme().selectedImgId !== undefined) renderMeme(elCanvas, canvasCtx)

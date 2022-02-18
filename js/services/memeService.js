@@ -190,6 +190,10 @@ function isLineClicked({ x, y }) {
     return isLine
 }
 
+function resetTxtPosY(idx) {
+    gMeme.lines[idx].pos.y = 0
+}
+
 // Storage
 function saveMemeToStorage(data) {
     gUserMemes.push(data)

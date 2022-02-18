@@ -23,21 +23,28 @@ function loadImageToCanvas(meme, elCanvas, canvasCtx, isDownload) {
 
 function renderImgOnCanvas(img, elCanvas, ctx, { lines }, isDownload = false) {
     ctx.drawImage(img, 0, 0, elCanvas.width, elCanvas.height)
-    try {
-        lines.forEach((line, currIdx) => {
+        // try {
+    lines.forEach((line, currIdx) => {
             if (!line.pos.y) {
+
                 line.pos.y = elCanvas.height / 2
-                if (!currIdx) line.pos.y = 100
-                else if (currIdx === 1) line.pos.y = elCanvas.height - 100
+                    // console.log('currIdx', currIdx)
+
+                if (!currIdx) line.pos.y = 20
+                else if (currIdx === 1) line.pos.y = elCanvas.height - line.fontSize - 10
+                console.log('elCanvas.height', elCanvas.height)
+
+                console.log('line.pos.y', line.pos.y)
+
             }
             drawText(currIdx, elCanvas, ctx, line, line.pos)
             if (!isDownload && currIdx === getCurrLineIdx()) {
                 drawRectAroundText(getLineRectParams(currIdx))
             }
         })
-    } catch (error) {
-        console.log('Caught you mofo')
-    }
+        // } catch (error) {
+        //     console.log('Caught you mofo')
+        // }
 
 }
 
@@ -142,7 +149,7 @@ function drawText(currIdx, elCanvas, canvasCtx, { size, font, fontSize, align, m
     pos.x = _getCoordX(elCanvas, align)
     const currFont = `${fontSize}px ${font}`
     canvasCtx.font = currFont
-    canvasCtx.lineWidth = size / 10
+    canvasCtx.lineWidth = fontSize / 10
     canvasCtx.textAlign = align
     canvasCtx.textBaseline = 'top'
     canvasCtx.strokeStyle = secndColor
