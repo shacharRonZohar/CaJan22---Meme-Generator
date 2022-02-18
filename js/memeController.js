@@ -23,7 +23,8 @@ function loadImageToCanvas(meme, elCanvas, canvasCtx, isDownload) {
 }
 
 function renderImgOnCanvas(img, elCanvas, ctx, { lines }, isDownload = false) {
-    ctx.drawImage(img, 0, 0, elCanvas.width, elCanvas.height);
+    ctx.drawImage(img, 0, 0, elCanvas.width, elCanvas.height)
+    if (!lines) return
     lines.forEach((line, currIdx) => {
         if (!line.pos.y) {
             line.pos.y = elCanvas.height / 2
@@ -125,7 +126,6 @@ function onDownloadMeme(ev, { elCanvas, canvasCtx }) {
     const data = elCanvas.toDataURL('image/png')
     elLink.download = 'my-meme'
     elLink.href = data
-        // ev.preventDefault()
 }
 
 function drawText(currIdx, elCanvas, canvasCtx, { size, font, fontSize, align, mainColor, secndColor, txt, pos }) {

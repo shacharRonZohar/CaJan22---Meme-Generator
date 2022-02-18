@@ -23,5 +23,5 @@ function closeGallery() {
 
 function onRandomMeme({ elCanvas, canvasCtx }) {
     closeGallery()
-        // showMemeEditor(elCanvas, canvasCtx, true)
+    showMemeEditor(elCanvas, canvasCtx, true)
 }

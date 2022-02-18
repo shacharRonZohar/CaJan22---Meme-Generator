@@ -56,13 +56,15 @@ function getLineAlign(idx) {
 function generateMeme(isRandom) {
     return {
 
-        selectedImgId: isRandom ? getRandomInt(0, gImgs.length) : gMeme.selectedImgId,
+        selectedImgId: isRandom ? getRandomInt(1, gImgs.length + 1) : gMeme.selectedImgId,
         selectedLineIdx: 0,
-        lines: isRandom ? getLines(getRandomInt(1, 3)) : getLines(2)
+        lines: isRandom ? getLines(getRandomInt(1, 3), isRandom) : getLines(2)
     }
 }
 
 function getLineParams(isRandom) {
+    console.log('isRandom', isRandom)
+
     const textSize = isRandom ? getRandomInt(5, 21) : 20
     return {
         txt: isRandom ? getRandomTxt() : 'Enter your text here',
