@@ -19,8 +19,8 @@ function onResizeCanvas({ elCanvas, canvasCtx }) {
 
     try {
         getMeme().lines.forEach((line, currIdx) => {
-            // console.log('getMeme()', getMeme().lines)
-            // setTextFontSize(currIdx)
+            const fontSize = elCanvasContainer.offsetWidth * 0.08
+            setTextFontSize(currIdx, fontSize)
         })
     } catch {
         console.log('Caught you Too!')
