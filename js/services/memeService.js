@@ -111,18 +111,20 @@ function setTextY(diff) {
 
 function setTextRectParams(lineIdx, params) {
     gMeme.lines[lineIdx].textRectParams = params
-    gMeme.lines[lineIdx].textRectCoords = params
-        // setTextRectCoords(lineIdx, params)
+        // console.log('params', params)
+
+    // gMeme.lines[lineIdx].textRectCoords = params
+    setTextRectCoords(lineIdx, params)
 }
 
-// function setTextRectCoords(lineIdx, { rectStartX, rectEndX, rectStartY, rectEndY }) {
-//     gMeme.lines[lineIdx].textRectCoords = {
-//         rectStartX,
-//         rectEndX,
-//         rectStartY,
-//         rectEndY
-//     }
-// }
+function setTextRectCoords(lineIdx, { textWidth, rectStartX, rectEndX, rectStartY, rectEndY }) {
+    gMeme.lines[lineIdx].textRectCoords = {
+        rectStartX,
+        rectEndX: rectStartX + rectEndX,
+        rectStartY,
+        rectEndY: rectStartY + rectEndY
+    }
+}
 
 // Changers
 function changeFontSize(diff) {
@@ -136,16 +138,14 @@ function cycleLine() {
 // Checkers
 
 function isLineClicked({ x, y }) {
-    // console.log('x', x)
-    // console.log('y', y)
-    gMeme.lines.forEach(({ textRectCoords }) => {
+    var isLine = false
+    gMeme.lines.forEach(({ textRectCoords }, currIdx) => {
         // console.log('textRectCoords', textRectCoords)
-
         if (x >= textRectCoords.rectStartX && x <= textRectCoords.rectEndX &&
             y >= textRectCoords.rectStartY && y <= textRectCoords.rectEndY) {
-            console.log('x', x)
-
+            gMeme.selectedLineIdx = currIdx
+            isLine = true
         }
     })
-
+    return isLine
 }

@@ -37,11 +37,38 @@ function renderImgOnCanvas(img, elCanvas, ctx, { lines }) {
 
 function onCycleLine(elCanvas, canvasCtx) {
     cycleLine()
+    switchTextInput()
     renderMeme(elCanvas, canvasCtx)
 }
 
+function switchTextInput() {
+    const currMeme = getMeme()
+    const txtValue = (currMeme.lines[getCurrLineIdx()].txt) ? currMeme.lines[getCurrLineIdx()].txt : ''
+    document.querySelector('.line-text').value = txtValue
+}
+
 function onCanvasClick(elCanvas, canvasCtx, ev) {
-    isLineClicked(ev)
+    if (isLineClicked(getEvPos(ev))) {
+        switchTextInput()
+        document.querySelector('.line-text').focus()
+        renderMeme(elCanvas, canvasCtx)
+    }
+}
+
+function getEvPos(ev) {
+    var pos = {
+            x: ev.offsetX,
+            y: ev.offsetY
+        }
+        // if (gTouchEvs.includes(ev.type)) {
+        //     ev.preventDefault()
+        //     ev = ev.changedTouches[0]
+        //     pos = {
+        //         x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
+        //         y: ev.pageY - ev.target.offsetTop - ev.target.clientTop
+        //     }
+        // }
+    return pos
 }
 
 function onChangeFontSize(diff, elCanvas, canvasCtx) {
@@ -84,6 +111,7 @@ function onSetTextRectParams(currIdx, elCanvas, canvasCtx, txt, pos, fontSize) {
     const params = {
         elCanvas,
         canvasCtx,
+        textWidth,
         rectStartX: pos.x - (textWidth / 2) - 5,
         rectEndX: textWidth + 10,
         rectStartY: pos.y - 5,
@@ -99,11 +127,8 @@ function onSetTextRectParams(currIdx, elCanvas, canvasCtx, txt, pos, fontSize) {
 }
 
 function drawRectAroundText({ elCanvas, canvasCtx, rectStartX, rectStartY, rectEndX, rectEndY }) {
-
-    //Handeling of Rect
     canvasCtx.strokeStyle = 'black'
     canvasCtx.strokeRect(rectStartX, rectStartY, rectEndX, rectEndY)
-        // renderMeme(elCanvas, canvasCtx)
 }
 
 function _getCoordX(elCanvas, align) {
