@@ -3,7 +3,7 @@
 function showMemeEditor(elCanvas, canvasCtx) {
     document.querySelector('.main-content-container').classList.add('meme-mode')
     document.querySelector('.main-editor-container').style.display = 'grid'
-    resizeCanvas(elCanvas)
+    onResizeCanvas({ elCanvas, canvasCtx })
     renderMeme(elCanvas, canvasCtx)
 }
 
@@ -57,6 +57,11 @@ function onCanvasClick(ev, { elCanvas, canvasCtx }) {
     }
 }
 
+function onSetLineTxt(ev, { elCanvas, canvasCtx }) {
+    setLineTxt(ev.srcElement.value)
+    renderMeme(elCanvas, canvasCtx)
+}
+
 function getEvPos(ev) {
     var pos = {
             x: ev.offsetX,
@@ -78,8 +83,8 @@ function onChangeFontSize(diff, elCanvas, canvasCtx) {
     renderMeme(elCanvas, canvasCtx)
 }
 
-function onFontChange(elCanvas, canvasCtx, font) {
-    setFont(font)
+function onFontChange(ev, { elCanvas, canvasCtx }) {
+    setFont(ev.srcElement.value)
     renderMeme(elCanvas, canvasCtx)
 }
 
@@ -90,6 +95,11 @@ function onSetAlign(elCavnas, canvasCtx, align) {
 
 function onMoveText(elCanvas, canvasCtx, diff) {
     setTextY(diff)
+    renderMeme(elCanvas, canvasCtx)
+}
+
+function onSetTxtMainColor(ev, { elCanvas, canvasCtx }) {
+    setTxtMainColor(ev.srcElement.value)
     renderMeme(elCanvas, canvasCtx)
 }
 
