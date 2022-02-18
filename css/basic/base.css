@@ -64,15 +64,15 @@ select option:focus {
 }
 
 @media (min-width:750px) {
-    *::-webkit-scrollbar {
+    .main-gallery-container::-webkit-scrollbar {
         display: inherit;
         width: 15px;
     }
-    *::-webkit-scrollbar-track {
+    .main-gallery-container::-webkit-scrollbar-track {
         background: var(--clr5);
         border-radius: 50px;
     }
-    *::-webkit-scrollbar-thumb {
+    .main-gallery-container::-webkit-scrollbar-thumb {
         background: linear-gradient(0deg, var(--clr2) 0%, var(--clr3) 100%);
         border-radius: 50px;
         /* height: ; */

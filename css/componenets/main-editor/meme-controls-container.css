@@ -117,3 +117,10 @@
         grid-template-columns: repeat(3, 1fr);
     }
 }
+
+@media (min-width:950px) {
+    .meme-controls-container {
+        grid-area: 1 /6 / span 10 / span 5;
+        gap: 20px;
+    }
+}
