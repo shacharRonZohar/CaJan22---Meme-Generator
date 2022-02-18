@@ -145,7 +145,7 @@ function drawText(currIdx, elCanvas, canvasCtx, { size, font, fontSize, align, m
     pos.x = _getCoordX(elCanvas, align)
     const currFont = `${fontSize}px ${font}`
     canvasCtx.font = currFont
-    canvasCtx.lineWidth = fontSize / 10
+    canvasCtx.lineWidth = size / 10
     canvasCtx.textAlign = align
     canvasCtx.textBaseline = 'top'
     canvasCtx.strokeStyle = secndColor

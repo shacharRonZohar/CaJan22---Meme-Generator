@@ -2,7 +2,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 40px!important;
+    margin-top: 20px!important;
     border-radius: 55px;
     font-family: mary-m, sans-serif;
     background: linear-gradient(90deg, var(--clr2) 0%, var(--clr3) 100%);
@@ -26,19 +26,25 @@ header ul {
     justify-content: space-between;
 }
 
-
-/* header li:first-child a {
-    margin-inline-end: 40px;
-} */
+@media (min-width:190px) {
+    header {
+        padding-left: 10px;
+        padding-right: 10px
+    }
+}
 
 @media (min-width:750px) {
     header {
-        height: 30px;
+        height: 70px;
+        font-size: 2rem;
+    }
+    header li:first-child a {
+        margin-inline-end: 40px;
     }
 }
 
 @media (min-width:950px) {
     header {
-        height: 45px;
+        height: 100px;
     }
 }
