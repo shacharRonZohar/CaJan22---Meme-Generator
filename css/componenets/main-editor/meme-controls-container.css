@@ -42,7 +42,7 @@
     width: 100%;
 }
 
-.meme-controls-container .color-picker-img {
+.meme-controls-container .main-color-picker-img {
     /* opacity: 0; */
     grid-area: 4/5;
     background-image: url(/assets/icons/color.png);

@@ -101,6 +101,17 @@ function setEvents(elCanvas, canvasCtx) {
                 canvasCtx
             },
             isSendEv: true
+        },
+        {
+            id: 9,
+            selec: '.secnd-color-picker',
+            evType: 'input',
+            funcToActPoint: onSetTxtSecndColor,
+            funcParams: {
+                elCanvas,
+                canvasCtx
+            },
+            isSendEv: true
         }
     ]
 }

@@ -123,6 +123,10 @@ function setTextRectCoords(lineIdx, { rectStartX, rectEndX, rectStartY, rectEndY
     }
 }
 
+function setTxtSecndColor(color) {
+    gMeme.lines[gMeme.selectedLineIdx].secndColor = color
+}
+
 // Changers
 function changeFontSize(diff) {
     gMeme.lines[gMeme.selectedLineIdx].fontSize += diff

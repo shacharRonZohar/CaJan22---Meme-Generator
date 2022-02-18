@@ -63,6 +63,11 @@ function onSetLineTxt(ev, { elCanvas, canvasCtx }) {
     renderMeme(elCanvas, canvasCtx)
 }
 
+function onSetTxtSecndColor(ev, { elCanvas, canvasCtx }) {
+    setTxtSecndColor(ev.srcElement.value)
+    renderMeme(elCanvas, canvasCtx)
+}
+
 function getEvPos(ev) {
     var pos = {
             x: ev.offsetX,
@@ -131,7 +136,7 @@ function drawText(currIdx, elCanvas, canvasCtx, { size, font, fontSize, align, m
     canvasCtx.lineWidth = size / 10
     canvasCtx.textAlign = align
     canvasCtx.textBaseline = 'top'
-    canvasCtx.strokeStyle = 'white'
+    canvasCtx.strokeStyle = secndColor
     canvasCtx.fillStyle = mainColor
     canvasCtx.fillText(txt, pos.x, pos.y)
     canvasCtx.strokeStyle = secndColor
