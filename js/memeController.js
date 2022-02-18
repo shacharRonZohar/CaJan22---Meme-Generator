@@ -3,8 +3,8 @@
 function showMemeEditor(elCanvas, canvasCtx, isRandom) {
     document.querySelector('.main-content-container').classList.add('meme-mode')
     document.querySelector('.main-editor-container').style.display = 'grid'
-    onResizeCanvas({ elCanvas, canvasCtx })
     setMeme(isRandom)
+    onResizeCanvas({ elCanvas, canvasCtx })
     renderMeme(elCanvas, canvasCtx)
 }
 

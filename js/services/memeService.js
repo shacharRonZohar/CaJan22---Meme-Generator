@@ -160,6 +160,9 @@ function setTxtSecndColor(color) {
     gMeme.lines[gMeme.selectedLineIdx].secndColor = color
 }
 
+function setTextFontSize(idx, fontSize) {
+    gMeme.lines[idx].fontSize = fontSize
+}
 // Changers
 function changeFontSize(diff) {
     gMeme.lines[gMeme.selectedLineIdx].fontSize += diff

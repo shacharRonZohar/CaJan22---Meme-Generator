@@ -1,5 +1,8 @@
 .main-canvas-container {
-    grid-area: 1 / 1 / span 10 / span 5;
+    grid-area: 1 / 1;
+    height: 70vw;
+    width: 70vw;
+    margin: auto;
 }
 
 .main-canvas-container canvas {

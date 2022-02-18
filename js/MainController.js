@@ -15,9 +15,20 @@ function init() {
 
 function onResizeCanvas({ elCanvas, canvasCtx }) {
     const elCanvasContainer = document.querySelector('.main-canvas-container')
-    elCanvasContainer.style.height = `${elCanvasContainer.offsetWidth }px`
     elCanvas.height = elCanvas.width = elCanvasContainer.offsetWidth
 
+    try {
+        getMeme().lines.forEach((line, currIdx) => {
+            // console.log('getMeme()', getMeme().lines)
+            // setTextFontSize(currIdx)
+        })
+    } catch {
+        console.log('Caught you Too!')
+            // console.log('elCanvasContainer.offsetWidth', elCanvasContainer.offsetWidth)
+    } finally {
+        console.log('offsetWidth', elCanvasContainer.offsetWidth)
+
+    }
     if (getMeme().selectedImgId !== undefined) renderMeme(elCanvas, canvasCtx)
 }
 
