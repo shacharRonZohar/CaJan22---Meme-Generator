@@ -1,9 +1,10 @@
 'use strict'
 
-function showMemeEditor(elCanvas, canvasCtx) {
+function showMemeEditor(elCanvas, canvasCtx, isRandom) {
     document.querySelector('.main-content-container').classList.add('meme-mode')
     document.querySelector('.main-editor-container').style.display = 'grid'
     onResizeCanvas({ elCanvas, canvasCtx })
+    setMeme(isRandom)
     renderMeme(elCanvas, canvasCtx)
 }
 
@@ -110,7 +111,7 @@ function onSetTxtMainColor(ev, { elCanvas, canvasCtx }) {
 }
 
 function onAddLine({ elCanvas, canvasCtx }) {
-    addLine()
+    getLine()
     renderMeme(elCanvas, canvasCtx)
 }
 

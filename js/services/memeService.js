@@ -30,37 +30,7 @@ const memesSentences = [
     'Write hello world , add to cv 7 years experienced',
 ];
 
-var gMeme = {
-    selectedImgId: 5,
-    selectedLineIdx: 0,
-    lines: [{
-            txt: 'Enter your text here',
-            size: 20,
-            font: 'impact',
-            fontSize: 48,
-            align: 'center',
-            mainColor: 'white',
-            secndColor: 'black',
-            pos: {
-                x: 0,
-                y: 0
-            }
-        },
-        {
-            txt: 'Enter your text here',
-            size: 20,
-            font: 'impact',
-            fontSize: 48,
-            align: 'center',
-            mainColor: 'white',
-            secndColor: 'black',
-            pos: {
-                x: 0,
-                y: 0
-            }
-        },
-    ]
-}
+var gMeme
 
 // Getters
 function getImgs() {
@@ -84,7 +54,68 @@ function getLineAlign(idx) {
     return gMeme.lines[idx].align
 }
 
+function getDefaultMeme() {
+    return {
+        selectedImgId: 5,
+        selectedLineIdx: 0,
+        lines: [
+            getLine(getLineParams()),
+            getLine(getLineParams())
+        ]
+    }
+}
+
+function getRandomMeme() {
+    return {
+        selectedImgId: getRandomInt(0, gImgs.length),
+        selectedLineIdx: 0,
+        lines: getLines(getRandomInt(0, 2)),
+    }
+}
+
+function getLineParams(isRandom) {
+    const textSize = isRandom ? getRandomInt(5, 21) : 20
+    return {
+        txt: isRandom ? getRandomTxt() : 'Enter your text here',
+        font: isRandom ? getRandomFont() : 'impact',
+        size: textSize,
+        fontSize: isRandom ? textSize + 28 : 48,
+        align: 'center',
+        mainColor: isRandom ? getRandomColor() : 'white',
+        secndColor: isRandom ? getRandomColor() : 'black',
+        pos: {
+            x: 0,
+            y: 0
+        }
+    }
+}
+
+function getLines(numOfLines, isRandom) {
+    var lines = []
+    for (let i = 0; i < numOfLines; i++) {
+        lines.push(getLine(getLineParams(isRandom)))
+    }
+    return lines
+}
+
+function getLine({ txt, font, fontSize, size, align, mainColor, secndColor, pos }) {
+    return {
+        txt,
+        font,
+        fontSize,
+        size,
+        align,
+        mainColor,
+        secndColor,
+        pos
+    }
+}
+
 // Setters
+function setMeme(isRandom) {
+    if (!isRandom) gMeme = getDefaultMeme()
+}
+
 function setMemeImg(id) {
     gMeme.selectedImgId = id
 }
@@ -140,21 +171,6 @@ function removeCurrLine() {
     gMeme.lines.splice(gMeme.selectedLineIdx, 1)
 }
 
-function addLine() {
-    gMeme.lines.push({
-        txt: 'Enter your text here',
-        size: 20,
-        font: 'impact',
-        fontSize: 48,
-        align: 'center',
-        mainColor: 'white',
-        secndColor: 'black',
-        pos: {
-            x: 0,
-            y: 0
-        },
-    })
-}
 
 // Checkers
 function isLineClicked({ x, y }) {
