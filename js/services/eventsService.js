@@ -133,6 +133,14 @@ function setEvents(elCanvas, canvasCtx) {
                 canvasCtx
             },
             isSendEv: false
+        },
+        {
+            id: 12,
+            selec: '.link-gallery',
+            evType: 'click',
+            funcToActPoint: renderGallery,
+            funcParams: null,
+            isSendEv: false
         }
     ]
 }

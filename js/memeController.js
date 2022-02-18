@@ -2,7 +2,7 @@
 
 function showMemeEditor(elCanvas, canvasCtx, isRandom) {
     document.querySelector('.main-content-container').classList.add('meme-mode')
-    document.querySelector('.main-editor-container').style.display = 'grid'
+    document.querySelector('.main-editor-container').classList.add('open')
     setMeme(isRandom)
     onResizeCanvas({ elCanvas, canvasCtx })
     renderMeme(elCanvas, canvasCtx)
@@ -23,28 +23,24 @@ function loadImageToCanvas(meme, elCanvas, canvasCtx, isDownload) {
 
 function renderImgOnCanvas(img, elCanvas, ctx, { lines }, isDownload = false) {
     ctx.drawImage(img, 0, 0, elCanvas.width, elCanvas.height)
-        // try {
-    lines.forEach((line, currIdx) => {
+    try {
+        lines.forEach((line, currIdx) => {
             if (!line.pos.y) {
 
                 line.pos.y = elCanvas.height / 2
                     // console.log('currIdx', currIdx)
 
                 if (!currIdx) line.pos.y = 20
-                else if (currIdx === 1) line.pos.y = elCanvas.height - line.fontSize - 10
-                console.log('elCanvas.height', elCanvas.height)
-
-                console.log('line.pos.y', line.pos.y)
-
+                else if (currIdx === 1) line.pos.y = elCanvas.height - line.fontSize - 20
             }
             drawText(currIdx, elCanvas, ctx, line, line.pos)
             if (!isDownload && currIdx === getCurrLineIdx()) {
                 drawRectAroundText(getLineRectParams(currIdx))
             }
         })
-        // } catch (error) {
-        //     console.log('Caught you mofo')
-        // }
+    } catch (error) {
+        console.log('Caught you mofo')
+    }
 
 }
 

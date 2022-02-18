@@ -1,7 +1,7 @@
 .main-editor-container {
-    display: grid;
-    /* gap: 20px; */
     grid-area: 1 / 1 / span 10 /span 10;
+    display: none;
+    /* gap: 20px; */
     grid-template: 1fr 5fr / 1fr;
 }
 

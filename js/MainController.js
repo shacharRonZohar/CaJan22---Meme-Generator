@@ -34,5 +34,5 @@ function onResizeCanvas({ elCanvas, canvasCtx }) {
 }
 
 function _setInitElVisibility() {
-    document.querySelector('.main-editor-container').style.display = 'none'
+    document.querySelector('.main-editor-container').classList.remove('open')
 }

@@ -2,7 +2,7 @@
     overflow-y: scroll;
     gap: 20px;
     padding-top: 10px;
-    display: grid;
+    display: none;
     grid-row: 3;
     grid-area: 2 / 1 / span 10 /span 10;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));

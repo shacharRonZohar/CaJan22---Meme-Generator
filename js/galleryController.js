@@ -1,6 +1,7 @@
 'use strict'
 
 function renderGallery() {
+    document.querySelector('.main-editor-container').classList.remove('open')
     const elGallContainer = document.querySelector('.main-gallery-container')
     getImgs().forEach(img => {
         elGallContainer.innerHTML +=
@@ -16,7 +17,7 @@ function onImgClicked(id) {
 }
 
 function closeGallery() {
-    document.querySelector('.main-gallery-container').style.display = 'none'
+    document.querySelector('.main-gallery-container').classList.remove('open')
     document.querySelector('.main-gallery-nav').style.display = 'none'
         // showMemeEditor()
 }

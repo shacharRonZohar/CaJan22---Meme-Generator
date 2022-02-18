@@ -18,7 +18,7 @@
         <nav class="main-nav-container">
             <ul class="clean-list">
                 <li>
-                    <a href="#" class="link-gallery">Gallery</a>
+                    <a class="link-gallery">Gallery</a>
                 </li>
                 <li>
                     <a href="#" class="link-about">About</a>
@@ -42,17 +42,18 @@
             <div class="main-canvas-container">
                 <canvas id="main-canvas"></canvas>
             </div>
-            <div class="meme-controls-container" style="display: none!important;" hidden>
-                <input type="text" name="line-text" id="line-text" class="line-text">
+            <div class="meme-controls-container">
+                <input type="text" name="line-text" id="line-text" class="btn line-text">
                 <button class="add-line">Add</button>
                 <button class="remove-line">Remove</button>
                 <button id="switch-line" class="switch-line">Switch</button>
-                <div class="text-config-bc"></div>
-                <div class="main-color-picker-img">
+                <button class="btn main-color-picker-img">
                     <input type="color" name="main-color-picker" id="main-color-picker" class="main-color-picker">
-                </div>
-                <div class="secnd-color-picker-img">
-                    <input type="color" name="secnd-color-picker" id="secnd-color-picker" class="secnd-color-picker">
+                </button>
+                <div class="secnd-color-picker-container">
+                    <div class="secnd-color-picker-img">
+                        <input type="color" name="secnd-color-picker" id="secnd-color-picker" class="secnd-color-picker">
+                    </div>
                 </div>
                 <button class="increase-font-size" id="increase-font-size"></button>
                 <button class="decrease-font-size" id="decrease-font-size "></button>
@@ -65,7 +66,7 @@
                      </select>
                 <button class="move-text move-text-up">Up</button>
                 <button class="move-text move-text-down">Down</button>
-                <a href="#" class="download-meme">Download</a>
+                <a href="#" class="btn download-meme">Download</a>
                 <button class="save-meme">Save</button>
             </div>
         </section>
