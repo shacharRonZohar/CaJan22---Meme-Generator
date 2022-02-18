@@ -11,7 +11,6 @@ function renderGallery() {
 }
 
 function onImgClicked(id) {
-    // console.log('id', id)
     closeGallery()
     setMemeImg(id)
 }

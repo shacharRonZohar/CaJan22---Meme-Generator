@@ -4,7 +4,6 @@ function uploadImg() {
     // A function to be called if request succeeds
     function onSuccess(uploadedImgUrl) {
         const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
-            // console.log(encodedUploadedImgUrl);
         document.querySelector('.user-msg').innerText = `Your photo is available here: ${uploadedImgUrl}`
 
         document.querySelector('.share-container').innerHTML = `
@@ -27,7 +26,6 @@ function doUploadImg(imgDataUrl, onSuccess) {
         })
         .then(res => res.text())
         .then((url) => {
-            // console.log('Got back live url:', url);
             onSuccess(url)
         })
         .catch((err) => {

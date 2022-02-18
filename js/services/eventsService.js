@@ -196,8 +196,6 @@ function _addChangeAlignListeners(elCanvas, canvasCtx) {
     const opts = ['left', 'center', 'right']
     document.querySelectorAll('.text-align').forEach((currBtn, currIdx) => {
         currBtn.addEventListener('click', () => {
-            // console.log('opts[currIdx', opts[currIdx])
-
             onSetAlign(elCanvas, canvasCtx, opts[currIdx])
             renderMeme(elCanvas, canvasCtx)
         })

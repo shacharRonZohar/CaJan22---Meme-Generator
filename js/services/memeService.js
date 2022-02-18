@@ -46,7 +46,6 @@ function getCurrLineIdx() {
 }
 
 function getLineRectParams(idx) {
-    // console.log('idx', idx)
     return gMeme.lines[idx].textRectParams
 }
 
@@ -55,7 +54,6 @@ function getLineAlign(idx) {
 }
 
 function generateMeme(isRandom) {
-    // console.log('gMeme.selectedImgId', gMeme.selectedImgId)
     return {
 
         selectedImgId: isRandom ? getRandomInt(0, gImgs.length) : gMeme.selectedImgId,
@@ -108,8 +106,6 @@ function addLine() {
 // Setters
 function setMeme(isRandom) {
     gMeme = generateMeme(isRandom)
-        // console.log('gMeme', gMeme)
-
 }
 
 function setMemeImg(id) {
@@ -128,8 +124,6 @@ function setTxtMainColor(color) {
 
 function setAlign(align) {
     gMeme.lines[gMeme.selectedLineIdx].align = align
-        // console.log('gMeme.lines[gMeme.selectedLineIdx]', gMeme.lines[gMeme.selectedLineIdx])
-
 }
 
 function setFont(font) {
@@ -176,7 +170,6 @@ function removeCurrLine() {
 function isLineClicked({ x, y }) {
     var isLine = false
     gMeme.lines.forEach(({ textRectCoords }, currIdx) => {
-        // console.log('textRectCoords', textRectCoords)
         if (x >= textRectCoords.rectStartX && x <= textRectCoords.rectEndX &&
             y >= textRectCoords.rectStartY && y <= textRectCoords.rectEndY) {
             gMeme.selectedLineIdx = currIdx
