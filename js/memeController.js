@@ -1,6 +1,9 @@
 'use strict'
 
 function showMemeEditor(elCanvas, canvasCtx, isRandom) {
+    // console.log('isRandom', isRandom)
+    // console.log('elCanvas,canvasCtx', elCanvas, canvasCtx)
+
     document.querySelector('.main-content-container').classList.add('meme-mode')
     document.querySelector('.main-editor-container').style.display = 'grid'
     onResizeCanvas({ elCanvas, canvasCtx })
@@ -9,21 +12,24 @@ function showMemeEditor(elCanvas, canvasCtx, isRandom) {
 }
 
 function renderMeme(elCanvas, canvasCtx, isDownload) {
-    // console.log('isDownload', isDownload)
-
     const meme = getMeme()
+
     loadImageToCanvas(meme, elCanvas, canvasCtx, isDownload)
 }
 
 function loadImageToCanvas(meme, elCanvas, canvasCtx, isDownload) {
     // Render on canvas
     var img = new Image()
+    console.log('meme', meme)
+
     img.onload = renderImgOnCanvas.bind(null, img, elCanvas, canvasCtx, meme, isDownload)
     img.src = `assets/meme-imgs/${meme.selectedImgId}.jpg`
 
 }
 
 function renderImgOnCanvas(img, elCanvas, ctx, { lines }, isDownload = false) {
+    console.log('lines', lines)
+
     ctx.drawImage(img, 0, 0, elCanvas.width, elCanvas.height);
     lines.forEach((line, currIdx) => {
         if (!line.pos.y) {
@@ -33,7 +39,7 @@ function renderImgOnCanvas(img, elCanvas, ctx, { lines }, isDownload = false) {
         }
         drawText(currIdx, elCanvas, ctx, line, line.pos)
         if (!isDownload && currIdx === getCurrLineIdx()) {
-            console.log('isDownload', isDownload)
+            // console.log('isDownload', isDownload)
             drawRectAroundText(getLineRectParams(currIdx))
         }
     })
@@ -96,6 +102,8 @@ function onFontChange(ev, { elCanvas, canvasCtx }) {
 }
 
 function onSetAlign(elCavnas, canvasCtx, align) {
+    // console.log('align', align)
+
     setAlign(align)
     renderMeme(elCavnas, canvasCtx)
 }
@@ -111,7 +119,7 @@ function onSetTxtMainColor(ev, { elCanvas, canvasCtx }) {
 }
 
 function onAddLine({ elCanvas, canvasCtx }) {
-    getLine()
+    addLine()
     renderMeme(elCanvas, canvasCtx)
 }
 
@@ -131,6 +139,9 @@ function onDownloadMeme(ev, { elCanvas, canvasCtx }) {
 }
 
 function drawText(currIdx, elCanvas, canvasCtx, { size, font, fontSize, align, mainColor, secndColor, txt, pos }) {
+    // console.log('align', align)
+
+
     pos.x = _getCoordX(elCanvas, align)
     const currFont = `${fontSize}px ${font}`
     canvasCtx.font = currFont

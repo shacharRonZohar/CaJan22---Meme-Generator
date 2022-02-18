@@ -112,6 +112,17 @@ function setEvents(elCanvas, canvasCtx) {
                 canvasCtx
             },
             isSendEv: true
+        },
+        {
+            id: 10,
+            selec: '.random-meme',
+            evType: 'click',
+            funcToActPoint: onRandomMeme,
+            funcParams: {
+                elCanvas,
+                canvasCtx
+            },
+            isSendEv: false
         }
     ]
 }
@@ -124,7 +135,7 @@ function _addEventListeners(elCanvas, canvasCtx) {
     const events = getAllEvents(elCanvas, canvasCtx)
     events.singularEvents.forEach(currEvent => {
         addEventListenerToEl(currEvent)
-    });
+    })
     _addControlsEventListeners(elCanvas, canvasCtx)
 }
 
@@ -143,6 +154,19 @@ function addEventListenerToEl({ selec, evType, funcToActPoint, funcParams, isSen
     if (isSendEv) funcToAct = (ev) => funcToActPoint(ev, funcParams)
     else funcToAct = (ev) => funcToActPoint(funcParams)
 
+    // @CR-Q what the fuck is this? I had a weird error and was too lazy to rummage through the debugger
+    // so google told me to do this to catch errors, and it works I think, but I have no idea what it actually does...
+    // Better version of unit tests?
+    // var isError = false
+    // try {
+    //     el.addEventListener(evType, (ev) => {
+    //         funcToAct(ev)
+    //     })
+    // } catch (error) {
+    //     console.log(error, `selec: ${selec}`, `el: ${el}`)
+    //     isError = true
+    // }
+    // if (!isError) 
     el.addEventListener(evType, (ev) => {
         funcToAct(ev)
     })
@@ -164,6 +188,7 @@ function _addChangeFontSizeListeners(elCanvas, canvasCtx) {
     })
     document.querySelector('.decrease-font-size').addEventListener('click', () => {
         onChangeFontSize(-1, elCanvas, canvasCtx, )
+        renderMeme(elCanvas, canvasCtx)
     })
 }
 
@@ -174,6 +199,7 @@ function _addChangeAlignListeners(elCanvas, canvasCtx) {
             // console.log('opts[currIdx', opts[currIdx])
 
             onSetAlign(elCanvas, canvasCtx, opts[currIdx])
+            renderMeme(elCanvas, canvasCtx)
         })
     })
 }
@@ -183,14 +209,16 @@ function _addMoveTextListeners(elCanvas, canvasCtx) {
 
     document.querySelector('.move-text-up').addEventListener('click', () => {
         onMoveText(elCanvas, canvasCtx, -5)
+        renderMeme(elCanvas, canvasCtx)
     })
     document.querySelector('.move-text-down').addEventListener('click', () => {
         onMoveText(elCanvas, canvasCtx, 5)
+        renderMeme(elCanvas, canvasCtx)
     })
 }
 
 function _addImgsEventListeners(elCanvas, canvasCtx) {
-    // Opens the gallery when an img is pressed
+    // Opens the editor when an img is pressed
     const elGallery = document.querySelector('.main-gallery-container')
     elGallery.querySelectorAll('img').forEach(img => {
         img.addEventListener('click', () => {

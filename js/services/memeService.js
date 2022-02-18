@@ -30,7 +30,7 @@ const memesSentences = [
     'Write hello world , add to cv 7 years experienced',
 ];
 
-var gMeme
+var gMeme = {}
 
 // Getters
 function getImgs() {
@@ -54,22 +54,13 @@ function getLineAlign(idx) {
     return gMeme.lines[idx].align
 }
 
-function getDefaultMeme() {
+function generateMeme(isRandom) {
+    // console.log('gMeme.selectedImgId', gMeme.selectedImgId)
     return {
-        selectedImgId: 5,
-        selectedLineIdx: 0,
-        lines: [
-            getLine(getLineParams()),
-            getLine(getLineParams())
-        ]
-    }
-}
 
-function getRandomMeme() {
-    return {
-        selectedImgId: getRandomInt(0, gImgs.length),
+        selectedImgId: isRandom ? getRandomInt(0, gImgs.length) : gMeme.selectedImgId,
         selectedLineIdx: 0,
-        lines: getLines(getRandomInt(0, 2)),
+        lines: isRandom ? getLines(getRandomInt(1, 3)) : getLines(2)
     }
 }
 
@@ -111,12 +102,19 @@ function getLine({ txt, font, fontSize, size, align, mainColor, secndColor, pos 
     }
 }
 
+function addLine() {
+    gMeme.lines.push(getLine(getLineParams(false)))
+}
 // Setters
 function setMeme(isRandom) {
-    if (!isRandom) gMeme = getDefaultMeme()
+    gMeme = generateMeme(isRandom)
+        // console.log('gMeme', gMeme)
+
 }
 
 function setMemeImg(id) {
+    console.log('id', id)
+
     gMeme.selectedImgId = id
 }
 
@@ -130,6 +128,8 @@ function setTxtMainColor(color) {
 
 function setAlign(align) {
     gMeme.lines[gMeme.selectedLineIdx].align = align
+        // console.log('gMeme.lines[gMeme.selectedLineIdx]', gMeme.lines[gMeme.selectedLineIdx])
+
 }
 
 function setFont(font) {

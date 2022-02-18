@@ -13,11 +13,16 @@ function renderGallery() {
 function onImgClicked(id) {
     // console.log('id', id)
     closeGallery()
-
     setMemeImg(id)
 }
 
 function closeGallery() {
     document.querySelector('.main-gallery-container').style.display = 'none'
     document.querySelector('.main-gallery-nav').style.display = 'none'
+        // showMemeEditor()
+}
+
+function onRandomMeme({ elCanvas, canvasCtx }) {
+    closeGallery()
+        // showMemeEditor(elCanvas, canvasCtx, true)
 }
