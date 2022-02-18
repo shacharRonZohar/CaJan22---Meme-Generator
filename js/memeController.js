@@ -7,20 +7,22 @@ function showMemeEditor(elCanvas, canvasCtx) {
     renderMeme(elCanvas, canvasCtx)
 }
 
-function renderMeme(elCanvas, canvasCtx) {
+function renderMeme(elCanvas, canvasCtx, isDownload) {
+    // console.log('isDownload', isDownload)
+
     const meme = getMeme()
-    loadImageToCanvas(meme, elCanvas, canvasCtx)
+    loadImageToCanvas(meme, elCanvas, canvasCtx, isDownload)
 }
 
-function loadImageToCanvas(meme, elCanvas, canvasCtx) {
+function loadImageToCanvas(meme, elCanvas, canvasCtx, isDownload) {
     // Render on canvas
     var img = new Image()
-    img.onload = renderImgOnCanvas.bind(null, img, elCanvas, canvasCtx, meme)
+    img.onload = renderImgOnCanvas.bind(null, img, elCanvas, canvasCtx, meme, isDownload)
     img.src = `assets/meme-imgs/${meme.selectedImgId}.jpg`
 
 }
 
-function renderImgOnCanvas(img, elCanvas, ctx, { lines }) {
+function renderImgOnCanvas(img, elCanvas, ctx, { lines }, isDownload = false) {
     ctx.drawImage(img, 0, 0, elCanvas.width, elCanvas.height);
     lines.forEach((line, currIdx) => {
         if (!line.pos.y) {
@@ -29,7 +31,8 @@ function renderImgOnCanvas(img, elCanvas, ctx, { lines }) {
             else if (currIdx === 1) line.pos.y = elCanvas.height - 100
         }
         drawText(currIdx, elCanvas, ctx, line, line.pos)
-        if (currIdx === getCurrLineIdx()) {
+        if (!isDownload && currIdx === getCurrLineIdx()) {
+            console.log('isDownload', isDownload)
             drawRectAroundText(getLineRectParams(currIdx))
         }
     })
@@ -110,6 +113,15 @@ function onRemoveCurrLine({ elCanvas, canvasCtx }) {
     removeCurrLine()
     if (!getMeme().lines.length) renderMeme(elCanvas, canvasCtx)
     else onCycleLine({ elCanvas, canvasCtx })
+}
+
+function onDownloadMeme(ev, { elCanvas, canvasCtx }) {
+    renderMeme(elCanvas, canvasCtx, true)
+    const elLink = ev.srcElement
+    const data = elCanvas.toDataURL('image/png')
+    elLink.download = 'my-meme'
+    elLink.href = data
+        // ev.preventDefault()
 }
 
 function drawText(currIdx, elCanvas, canvasCtx, { size, font, fontSize, align, mainColor, secndColor, txt, pos }) {

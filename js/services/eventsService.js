@@ -90,6 +90,17 @@ function setEvents(elCanvas, canvasCtx) {
                 canvasCtx
             },
             isSendEv: false
+        },
+        {
+            id: 8,
+            selec: '.download-meme',
+            evType: 'click',
+            funcToActPoint: onDownloadMeme,
+            funcParams: {
+                elCanvas,
+                canvasCtx
+            },
+            isSendEv: true
         }
     ]
 }
