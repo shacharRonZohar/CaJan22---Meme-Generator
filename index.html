@@ -11,66 +11,65 @@
 </head>
 
 <body onload="init()">
-    <div class="main-flex-container main-layout">
-        <header class="main-layout">
-            <div class="main-logo">
-                Logo
+    <header class="main-layout">
+        <div class="main-logo">
+            Logo
+        </div>
+        <nav class="main-nav-container">
+            <ul class="clean-list">
+                <li>
+                    <a href="#" class="link-gallery">Gallery</a>
+                </li>
+                <li>
+                    <a href="#" class="link-about">About</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main-content-container main-layout">
+        <section class="main-gallery-nav">
+            <form class="search-form">
+                <input type="text" placeholder="Search" name="search" class="input-search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+            <div class="keywords"></div>
+            <button class="random-meme">I'm feeling lucky</button>
+            <a href="#" class="link-more">More</a>
+        </section>
+        <section class="main-gallery-container main-content open">
+        </section>
+        <section class="main-editor-container main-content open">
+            <div class="main-canvas-container">
+                <canvas id="main-canvas"></canvas>
             </div>
-            <nav class="main-nav-container">
-                <ul class="clean-list">
-                    <li>
-                        <a href="#" class="link-gallery">Gallery</a>
-                    </li>
-                    <li>
-                        <a href="#" class="link-about">About</a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
-        <main class="main-content-container main-layout">
-            <section class="main-gallery-nav">
-                <form class="search-form">
-                    <input type="text" placeholder="Search" name="search" class="input-search">
-                    <button type="submit"><i class="fa fa-search"></i></button>
-                </form>
-                <button class="random-meme">I'm feeling lucky</button>
-                <a href="#" class="link-more">More</a>
-            </section>
-            <section class="main-gallery-container main-content open">
-            </section>
-            <section class="main-editor-container main-content open">
-                <div class="main-canvas-container">
-                    <canvas id="main-canvas"></canvas>
+            <div class="meme-controls-container">
+                <input type="text" name="line-text" id="line-text" class="line-text">
+                <button class="add-line">Add</button>
+                <button class="remove-line">Remove</button>
+                <button id="switch-line" class="switch-line">Switch</button>
+                <!-- <div class="text-config-bc"></div> -->
+                <div class="main-color-picker-img">
+                    <input type="color" name="main-color-picker" id="main-color-picker" class="main-color-picker">
                 </div>
-                <div class="meme-controls-container">
-                    <input type="text" name="line-text" id="line-text" class="line-text">
-                    <button class="add-line">Add</button>
-                    <button class="remove-line">Remove</button>
-                    <button id="switch-line" class="switch-line">Switch</button>
-                    <!-- <div class="text-config-bc"></div> -->
-                    <div class="main-color-picker-img">
-                        <input type="color" name="main-color-picker" id="main-color-picker" class="main-color-picker">
-                    </div>
-                    <div class="secnd-color-picker-img">
-                        <input type="color" name="secnd-color-picker" id="secnd-color-picker" class="secnd-color-picker">
-                    </div>
-                    <button class="increase-font-size" id="increase-font-size"></button>
-                    <button class="decrease-font-size" id="decrease-font-size "></button>
-                    <button class="text-align text-align-left"></button>
-                    <button class="text-align text-align-center"></button>
-                    <button class="text-align text-align-right"></button>
-                    <select name="font-picker" id="font-picker" class="font-picker">
+                <div class="secnd-color-picker-img">
+                    <input type="color" name="secnd-color-picker" id="secnd-color-picker" class="secnd-color-picker">
+                </div>
+                <button class="increase-font-size" id="increase-font-size"></button>
+                <button class="decrease-font-size" id="decrease-font-size "></button>
+                <button class="text-align text-align-left"></button>
+                <button class="text-align text-align-center"></button>
+                <button class="text-align text-align-right"></button>
+                <select name="font-picker" id="font-picker" class="font-picker">
                         <option value="impact">impact</option>
                         <option value="arial">arial</option>
                      </select>
-                    <button class="move-text move-text-up">Up</button>
-                    <button class="move-text move-text-down">Down</button>
-                    <a href="#" class="download-meme">Download</a>
-                    <button class="save-meme">Save</button>
-                </div>
-            </section>
-        </main>
-    </div>
+                <button class="move-text move-text-up">Up</button>
+                <button class="move-text move-text-down">Down</button>
+                <a href="#" class="download-meme">Download</a>
+                <button class="save-meme">Save</button>
+            </div>
+        </section>
+    </main>
     <script src="js/services/storageService.js"></script>
     <script src="js/services/uploadService.js"></script>
     <script src="js/services/utilService.js"></script>
