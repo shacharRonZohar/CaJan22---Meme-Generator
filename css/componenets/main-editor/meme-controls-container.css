@@ -75,3 +75,7 @@
     grid-area: 3/5;
     background-image: url(/assets/icons/align-r.png);
 }
+
+.meme-controls-container .font-picker {
+    grid-area: 4 /1;
+}

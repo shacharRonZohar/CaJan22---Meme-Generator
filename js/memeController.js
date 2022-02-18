@@ -35,7 +35,9 @@ function renderImgOnCanvas(img, elCanvas, ctx, { lines }) {
     })
 }
 
-function onCycleLine(elCanvas, canvasCtx) {
+function onCycleLine({ elCanvas, canvasCtx }) {
+    console.log('elCanvas', elCanvas)
+
     cycleLine()
     switchTextInput()
     renderMeme(elCanvas, canvasCtx)
@@ -47,7 +49,7 @@ function switchTextInput() {
     document.querySelector('.line-text').value = txtValue
 }
 
-function onCanvasClick(elCanvas, canvasCtx, ev) {
+function onCanvasClick(ev, { elCanvas, canvasCtx }) {
     if (isLineClicked(getEvPos(ev))) {
         switchTextInput()
         document.querySelector('.line-text').focus()

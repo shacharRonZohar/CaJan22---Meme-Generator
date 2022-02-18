@@ -23,13 +23,21 @@ function _setInitElVisibility() {
 }
 
 function _addEventListeners(elCanvas, canvasCtx) {
-    _addCanvasResizeListener(elCanvas, canvasCtx)
+    const events = getAllEvents(elCanvas, canvasCtx)
+    var funcParams = {
+        elCanvas,
+        canvasCtx
+    }
+    addEventListenerToEl('.switch-line', 'click', onCycleLine, funcParams, false)
     _addCanvasClickListener(elCanvas, canvasCtx)
-    _addChangeLineListener(elCanvas, canvasCtx)
+    _addCanvasResizeListener(elCanvas, canvasCtx)
+        // _addChangeLineListener(elCanvas, canvasCtx)
     _addLineInputListener(elCanvas, canvasCtx)
     _addImgsEventListeners(elCanvas, canvasCtx)
     _addControlsEventListeners(elCanvas, canvasCtx)
 }
+
+addEventListenerToEl(selec, evType, funcToActPoint, funcParams, isSendEv)
 
 function _addCanvasClickListener(elCanvas, canvasCtx) {
     elCanvas.addEventListener('click', (ev) => {
@@ -51,11 +59,11 @@ function _addCanvasResizeListener(elCanvas, canvasCtx) {
     })
 }
 
-function _addChangeLineListener(elCanvas, canvasCtx) {
-    document.querySelector('.switch-line').addEventListener('click', () => {
-        onCycleLine(elCanvas, canvasCtx)
-    })
-}
+// function _addChangeLineListener(elCanvas, canvasCtx) {
+//     document.querySelector('.switch-line').addEventListener('click', () => {
+//         onCycleLine(elCanvas, canvasCtx)
+//     })
+// }
 
 function _addImgsEventListeners(elCanvas, canvasCtx) {
     // Opens the gallery when an img is pressed
@@ -117,5 +125,27 @@ function _addMoveTextListeners(elCanvas, canvasCtx) {
     })
     document.querySelector('.move-text-down').addEventListener('click', () => {
         onMoveText(elCanvas, canvasCtx, 5)
+    })
+}
+
+function addEventListenerToEl({ selec, evType, funcToActPoint, funcParams, isSendEv }) {
+    // selec = selector,
+    // evType = what type of listener to add, ie 'click' 'change
+    // funcToActPoint = the function to be called by the listener
+    // funcParams = the params for the function called by the listener
+    // isSendEv = should the funcToAct recieve the ev as a param
+
+    var el, funcToAct
+
+    if (typeof selec !== 'string') el = selec
+    else el = document.querySelector(selec)
+
+    if (isSendEv) funcToAct = (ev) => funcToActPoint(ev, funcParams)
+    else funcToAct = (ev) => funcToActPoint(funcParams)
+
+    document.querySelector(selec).addEventListener(evType, (ev) => {
+        console.log('funcToAct', funcToAct)
+
+        funcToAct(ev)
     })
 }
