@@ -23,23 +23,25 @@ function loadImageToCanvas(meme, elCanvas, canvasCtx, isDownload) {
 
 function renderImgOnCanvas(img, elCanvas, ctx, { lines }, isDownload = false) {
     ctx.drawImage(img, 0, 0, elCanvas.width, elCanvas.height)
-    if (checkIfObjHasEmpty()) return
-    lines.forEach((line, currIdx) => {
-        if (!line.pos.y) {
-            line.pos.y = elCanvas.height / 2
-            if (!currIdx) line.pos.y = 100
-            else if (currIdx === 1) line.pos.y = elCanvas.height - 100
-        }
-        drawText(currIdx, elCanvas, ctx, line, line.pos)
-        if (!isDownload && currIdx === getCurrLineIdx()) {
-            drawRectAroundText(getLineRectParams(currIdx))
-        }
-    })
+    try {
+        lines.forEach((line, currIdx) => {
+            if (!line.pos.y) {
+                line.pos.y = elCanvas.height / 2
+                if (!currIdx) line.pos.y = 100
+                else if (currIdx === 1) line.pos.y = elCanvas.height - 100
+            }
+            drawText(currIdx, elCanvas, ctx, line, line.pos)
+            if (!isDownload && currIdx === getCurrLineIdx()) {
+                drawRectAroundText(getLineRectParams(currIdx))
+            }
+        })
+    } catch (error) {
+        console.log('Caught you mofo')
+    }
+
 }
 
-function checkIfObjHasEmpty() {
 
-}
 
 function onCycleLine({ elCanvas, canvasCtx }) {
     cycleLine()

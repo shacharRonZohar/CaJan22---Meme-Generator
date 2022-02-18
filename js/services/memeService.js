@@ -47,8 +47,6 @@ function generateMeme(isRandom) {
 }
 
 function getLineParams(isRandom) {
-    console.log('isRandom', isRandom)
-
     const textSize = isRandom ? getRandomInt(5, 21) : 20
     return {
         txt: isRandom ? getRandomTxt() : 'Enter your text here',
@@ -121,8 +119,6 @@ function setMeme(isRandom) {
 }
 
 function setMemeImg(id) {
-    console.log('id', id)
-
     gMeme.selectedImgId = id
 }
 
