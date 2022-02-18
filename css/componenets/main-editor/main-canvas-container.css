@@ -3,6 +3,8 @@
     height: 70vw;
     width: 70vw;
     margin: auto;
+    max-width: 380px;
+    max-height: 380px;
 }
 
 .main-canvas-container canvas {

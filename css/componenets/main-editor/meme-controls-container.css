@@ -102,3 +102,18 @@
 .meme-controls-container .download-meme {
     line-height: 3em;
 }
+
+@media (min-width:370px) {
+    .meme-controls-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .meme-controls-container .line-text {
+        grid-column: span 2;
+    }
+}
+
+@media (min-width:530px) {
+    .meme-controls-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
