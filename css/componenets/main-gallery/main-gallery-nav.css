@@ -5,6 +5,7 @@
     justify-content: space-between;
     height: 300px;
     width: 100%;
+    font-family: may-m, sans-serif;
 }
 
 .main-gallery-nav .search-form {
@@ -34,10 +35,15 @@
     height: 10%; */
 }
 
+.link-more {
+    line-height: 2em;
+}
+
 .main-gallery-nav .random-meme,
 .link-more {
     height: 10%;
     width: 90%;
+    /* vertical-align: center; */
     text-align: center;
     cursor: pointer;
     border-radius: 50px;
