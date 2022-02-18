@@ -36,8 +36,6 @@ function renderImgOnCanvas(img, elCanvas, ctx, { lines }) {
 }
 
 function onCycleLine({ elCanvas, canvasCtx }) {
-    console.log('elCanvas', elCanvas)
-
     cycleLine()
     switchTextInput()
     renderMeme(elCanvas, canvasCtx)
@@ -101,6 +99,17 @@ function onMoveText(elCanvas, canvasCtx, diff) {
 function onSetTxtMainColor(ev, { elCanvas, canvasCtx }) {
     setTxtMainColor(ev.srcElement.value)
     renderMeme(elCanvas, canvasCtx)
+}
+
+function onAddLine({ elCanvas, canvasCtx }) {
+    addLine()
+    renderMeme(elCanvas, canvasCtx)
+}
+
+function onRemoveCurrLine({ elCanvas, canvasCtx }) {
+    removeCurrLine()
+    if (!getMeme().lines.length) renderMeme(elCanvas, canvasCtx)
+    else onCycleLine({ elCanvas, canvasCtx })
 }
 
 function drawText(currIdx, elCanvas, canvasCtx, { size, font, fontSize, align, mainColor, secndColor, txt, pos }) {

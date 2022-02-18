@@ -111,13 +111,10 @@ function setTextY(diff) {
 
 function setTextRectParams(lineIdx, params) {
     gMeme.lines[lineIdx].textRectParams = params
-        // console.log('params', params)
-
-    // gMeme.lines[lineIdx].textRectCoords = params
     setTextRectCoords(lineIdx, params)
 }
 
-function setTextRectCoords(lineIdx, { textWidth, rectStartX, rectEndX, rectStartY, rectEndY }) {
+function setTextRectCoords(lineIdx, { rectStartX, rectEndX, rectStartY, rectEndY }) {
     gMeme.lines[lineIdx].textRectCoords = {
         rectStartX,
         rectEndX: rectStartX + rectEndX,
@@ -135,8 +132,27 @@ function cycleLine() {
     return (gMeme.selectedLineIdx >= gMeme.lines.length - 1) ? gMeme.selectedLineIdx = 0 : ++gMeme.selectedLineIdx
 }
 
-// Checkers
+function removeCurrLine() {
+    gMeme.lines.splice(gMeme.selectedLineIdx, 1)
+}
 
+function addLine() {
+    gMeme.lines.push({
+        txt: 'Enter your text here',
+        size: 20,
+        font: 'impact',
+        fontSize: 48,
+        align: 'center',
+        mainColor: 'white',
+        secndColor: 'black',
+        pos: {
+            x: 0,
+            y: 0
+        },
+    })
+}
+
+// Checkers
 function isLineClicked({ x, y }) {
     var isLine = false
     gMeme.lines.forEach(({ textRectCoords }, currIdx) => {

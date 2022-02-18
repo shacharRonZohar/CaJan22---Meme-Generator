@@ -5,8 +5,6 @@ const EVENTS = {
 }
 
 function setEvents(elCanvas, canvasCtx) {
-    console.log('elCanvas', elCanvas)
-
     EVENTS.singularEvents = [{
             id: 0,
             selec: elCanvas,
@@ -70,8 +68,29 @@ function setEvents(elCanvas, canvasCtx) {
                 canvasCtx
             },
             isSendEv: true
+        },
+        {
+            id: 6,
+            selec: '.remove-line',
+            evType: 'click',
+            funcToActPoint: onRemoveCurrLine,
+            funcParams: {
+                elCanvas,
+                canvasCtx
+            },
+            isSendEv: false
+        },
+        {
+            id: 7,
+            selec: '.add-line',
+            evType: 'click',
+            funcToActPoint: onAddLine,
+            funcParams: {
+                elCanvas,
+                canvasCtx
+            },
+            isSendEv: false
         }
-
     ]
 }
 
