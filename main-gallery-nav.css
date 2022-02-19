@@ -49,16 +49,14 @@
     cursor: pointer;
     border-radius: 50px;
     border: 0;
-    background: var(--clr5);
+    background: linear-gradient(90deg, var(--clr2) 0%, var(--clr3) 100%);
     text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.63);
     box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.116);
     color: #FFF;
 }
 
 .main-gallery-nav .search-form .input-search:focus,
-.main-gallery-nav .search-form .input-search:hover,
-.main-gallery-nav .random-meme:hover,
-.link-more:hover {
+.main-gallery-nav .search-form .input-search:hover {
     outline: none;
     background: linear-gradient(90deg, var(--clr2) 0%, var(--clr3) 100%);
 }
@@ -90,10 +88,6 @@
     font-size: 0.5em;
 }
 
-.main-gallery-nav .link-more {
-    line-height: 3em;
-}
-
 @media (min-width:300px) {
     /* .main-gallery-nav {
         justify-content: center;
@@ -120,47 +114,8 @@
     }
 }
 
-@media (min-width:750px) {
-    .main-gallery-nav {
-        flex-direction: row;
-        width: initial;
-        height: initial;
-        font-size: 2rem;
-    }
-    .main-gallery-nav>*:not(:last-child) {
-        margin-inline-end: 10px;
-    }
-    .main-gallery-nav .search-form {
-        /* background-color: var(--clr5); */
-        /* border-radius: 50px; */
-        /* padding: 25px 20px 25px 25px; */
-        height: 10vh;
-        text-align: start;
-    }
-    .main-gallery-nav .search-form button {}
-    .main-gallery-nav .keywords {
-        height: 10vh;
-    }
-    .main-gallery-nav .search-form button {
-        /* height: 10vh; */
-        cursor: pointer;
-        border: 0;
-        background-color: var(--clr5);
-        text-align: center;
-    }
-    .main-gallery-nav .input-search {
-        background-color: inherit;
-        border: 0;
-    }
-    .main-gallery-nav .input-search,
-    .main-gallery-nav .input-search::placeholder {
-        color: var(--clr6);
-    }
-    .main-gallery-nav .random-meme,
-    .main-gallery-nav .link-more {
-        height: 5vh;
-    }
-    .main-gallery-nav .link-more {
-        font-size: 1rem;
+@media (min-width:950px) {
+    * {
+        all: unset;
     }
 }
