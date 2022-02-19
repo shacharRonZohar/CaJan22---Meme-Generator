@@ -112,6 +112,12 @@ function onMouseUpCanvas() {
     document.body.style.cursor = 'grab'
 }
 
+function onShareMeme({ elCanvas }) {
+    console.log('elCanvas', elCanvas)
+
+    uploadImg(elCanvas)
+}
+
 function getEvPos(ev) {
     var pos = {
             x: ev.offsetX,

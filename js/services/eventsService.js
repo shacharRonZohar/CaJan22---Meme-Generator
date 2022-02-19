@@ -15,7 +15,8 @@ function setEvents(elCanvas, canvasCtx) {
                 canvasCtx
             },
             isSendEv: true
-        }, {
+        },
+        {
             id: 1,
             selec: '.line-text',
             evType: 'input',
@@ -26,7 +27,8 @@ function setEvents(elCanvas, canvasCtx) {
             },
             isSendEv: true
 
-        }, {
+        },
+        {
             id: 2,
             selec: window,
             evType: 'resize',
@@ -37,7 +39,8 @@ function setEvents(elCanvas, canvasCtx) {
             },
             isSendEv: false
 
-        }, {
+        },
+        {
             id: 3,
             selec: '.switch-line',
             evType: 'click',
@@ -47,7 +50,8 @@ function setEvents(elCanvas, canvasCtx) {
                 canvasCtx
             },
             isSendEv: false
-        }, {
+        },
+        {
             id: 4,
             selec: '.main-color-picker',
             evType: 'input',
@@ -166,7 +170,8 @@ function setEvents(elCanvas, canvasCtx) {
                 canvasCtx
             },
             isSendEv: true
-        }, {
+        },
+        {
             id: 15,
             selec: elCanvas,
             evType: 'mousedown',
@@ -195,6 +200,14 @@ function setEvents(elCanvas, canvasCtx) {
             funcToActPoint: onMouseUpCanvas,
             funcParams: null,
             isSendEv: true
+        },
+        {
+            id: 18,
+            selec: '.share-meme',
+            evType: 'click',
+            funcToActPoint: onShareMeme,
+            funcParams: { elCanvas },
+            isSendEv: null
         }
     ]
 }
