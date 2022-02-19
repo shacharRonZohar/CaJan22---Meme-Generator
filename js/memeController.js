@@ -8,7 +8,7 @@ function showMemeEditor(elCanvas, canvasCtx, isRandom) {
     setMeme(isRandom)
     onResizeCanvas({ elCanvas, canvasCtx })
     switchTextInput()
-    renderMeme(elCanvas, canvasCtx)
+    renderMeme(elCanvas, canvasCtx, null, true)
 }
 
 function hideMemeEditor() {
@@ -16,32 +16,30 @@ function hideMemeEditor() {
     document.querySelector('.main-editor-container').classList.remove('open')
 }
 
-function renderMeme(elCanvas, canvasCtx, isDownload) {
+function renderMeme(elCanvas, canvasCtx, isDownload, isAlign) {
     const meme = getMeme()
-    loadImageToCanvas(meme, elCanvas, canvasCtx, isDownload)
+    loadImageToCanvas(meme, elCanvas, canvasCtx, isDownload, isAlign)
 }
 
-function loadImageToCanvas(meme, elCanvas, canvasCtx, isDownload) {
+function loadImageToCanvas(meme, elCanvas, canvasCtx, isDownload, isAlign) {
     // Render on canvas
+
     var img = new Image()
-    img.onload = renderImgOnCanvas.bind(null, img, elCanvas, canvasCtx, meme, isDownload)
+    img.onload = renderImgOnCanvas.bind(null, img, elCanvas, canvasCtx, meme, isDownload, isAlign)
     img.src = `assets/meme-imgs/${meme.selectedImgId}.jpg`
 
 }
 
-function renderImgOnCanvas(img, elCanvas, ctx, { lines }, isDownload = false) {
+function renderImgOnCanvas(img, elCanvas, ctx, { lines }, isDownload = false, isAlign = false) {
     ctx.drawImage(img, 0, 0, elCanvas.width, elCanvas.height)
     try {
         lines.forEach((line, currIdx) => {
             if (!line.pos.y) {
-
                 line.pos.y = elCanvas.height / 2
-                    // console.log('currIdx', currIdx)
-
                 if (!currIdx) line.pos.y = 20
                 else if (currIdx === 1) line.pos.y = elCanvas.height - line.fontSize - 20
             }
-            drawText(currIdx, elCanvas, ctx, line, line.pos)
+            drawText(currIdx, elCanvas, ctx, line, isAlign)
             if (!isDownload && currIdx === getCurrLineIdx()) {
                 drawRectAroundText(getLineRectParams(currIdx))
             }
@@ -49,7 +47,6 @@ function renderImgOnCanvas(img, elCanvas, ctx, { lines }, isDownload = false) {
     } catch (error) {
         console.log('Caught you mofo')
     }
-
 }
 
 
@@ -89,6 +86,32 @@ function onSaveMeme({ elCanvas }) {
     saveMemeToStorage(data)
 }
 
+function onMouseDownCanvas(ev) {
+    const pos = getEvPos(ev)
+    if (!isLineClicked(pos)) return
+
+    console.log('pos', pos)
+    setStartPos(pos)
+    setLineIsDrag(true)
+    document.body.style.cursor = 'grabbing'
+}
+
+function onMove(ev, { elCanvas, canvasCtx }) {
+    if (getLineIsDrag()) {
+        const pos = getEvPos(ev)
+        const startPos = getStartPos()
+        const dx = pos.x - startPos.x
+        const dy = pos.y - startPos.y
+        moveCurrLine(dx, dy)
+        renderMeme(elCanvas, canvasCtx)
+    }
+}
+
+function onMouseUpCanvas() {
+    setLineIsDrag(false)
+    document.body.style.cursor = 'grab'
+}
+
 function getEvPos(ev) {
     var pos = {
             x: ev.offsetX,
@@ -117,7 +140,7 @@ function onFontChange(ev, { elCanvas, canvasCtx }) {
 
 function onSetAlign(elCavnas, canvasCtx, align) {
     setAlign(align)
-    renderMeme(elCavnas, canvasCtx)
+    renderMeme(elCavnas, canvasCtx, null, true)
 }
 
 function onMoveText(elCanvas, canvasCtx, diff) {
@@ -149,9 +172,10 @@ function onDownloadMeme(ev, { elCanvas, canvasCtx }) {
     elLink.href = data
 }
 
-function drawText(currIdx, elCanvas, canvasCtx, { size, font, fontSize, align, mainColor, secndColor, txt, pos }) {
+function drawText(currIdx, elCanvas, canvasCtx, { font, fontSize, align, mainColor, secndColor, txt, pos }, isAlign) {
+    console.log('isAlign', isAlign)
     if (!txt) txt = document.querySelector('.line-text').placeholder
-    pos.x = _getCoordX(elCanvas, align)
+    if (isAlign) pos.x = _getCoordX(elCanvas, align)
     const currFont = `${fontSize}px ${font}`
     canvasCtx.font = currFont
     canvasCtx.lineWidth = fontSize / 10

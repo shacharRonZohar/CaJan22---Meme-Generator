@@ -13,8 +13,12 @@ var gImgs = [{ id: 1, keywords: ['funny', 'notcat'] },
     { id: 10, keywords: ['funny', 'cat'] },
 
 ]
+
 var gFilterBy = 'funny'
 var gIsMemes
+var gIsDrag
+var gStartPos
+
 var gMeme = {}
 
 // Getters
@@ -31,8 +35,16 @@ function getMeme() {
     return gMeme
 }
 
+function getCurrLine() {
+    return gMeme.lines[gMeme.selectedLineIdx]
+}
+
 function getIsMemes() {
     return gIsMemes
+}
+
+function getStartPos() {
+    return gStartPos
 }
 
 function getCurrLineIdx() {
@@ -123,6 +135,10 @@ function getMemesFromStorage() {
     return loadFromStorage(MEMES_STORAGE_KEY)
 }
 
+function getLineIsDrag() {
+    return gIsDrag
+}
+
 function addLine() {
     gMeme.lines.push(getLine(getLineParams(false)))
 }
@@ -134,6 +150,14 @@ function setMeme(isRandom) {
 
 function setFilter(filterBy) {
     gFilterBy = filterBy
+}
+
+function setLineIsDrag(isDrag) {
+    gIsDrag = isDrag
+}
+
+function setStartPos(pos) {
+    gStartPos = pos
 }
 
 function setIsMemes(isMemes) {
@@ -198,7 +222,11 @@ function removeCurrLine() {
     gMeme.lines.splice(gMeme.selectedLineIdx, 1)
 }
 
-
+function moveCurrLine(dx, dy) {
+    gMeme.lines[getCurrLineIdx()].pos.x += dx
+    gMeme.lines[getCurrLineIdx()].pos.y += dy
+    setStartPos(gMeme.lines[getCurrLineIdx()].pos)
+}
 // Checkers
 function isLineClicked({ x, y }) {
     var isLine = false

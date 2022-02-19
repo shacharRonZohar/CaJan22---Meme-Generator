@@ -166,6 +166,35 @@ function setEvents(elCanvas, canvasCtx) {
                 canvasCtx
             },
             isSendEv: true
+        }, {
+            id: 15,
+            selec: elCanvas,
+            evType: 'mousedown',
+            funcToActPoint: onMouseDownCanvas,
+            funcParams: {
+                elCanvas,
+                canvasCtx
+            },
+            isSendEv: true
+        },
+        {
+            id: 16,
+            selec: elCanvas,
+            evType: 'mousemove',
+            funcToActPoint: onMove,
+            funcParams: {
+                elCanvas,
+                canvasCtx
+            },
+            isSendEv: true
+        },
+        {
+            id: 17,
+            selec: elCanvas,
+            evType: 'mouseup',
+            funcToActPoint: onMouseUpCanvas,
+            funcParams: null,
+            isSendEv: true
         }
     ]
 }
@@ -184,18 +213,13 @@ function _addEventListeners(elCanvas, canvasCtx) {
 
 function addEventListenerToEl({ selec, evType, funcToActPoint, funcParams, isSendEv }) {
     // selec = selector,
-    // evType = what type of listener to add, ie 'click' 'change
+    // evType = what type of listener to add, ie 'click' 'change'
     // funcToActPoint = the function to be called by the listener
     // funcParams = the params for the function called by the listener
     // isSendEv = should the funcToAct recieve the ev as a param
 
-    var el, funcToAct
-
-    if (typeof selec !== 'string') el = selec
-    else el = document.querySelector(selec)
-
-    if (isSendEv) funcToAct = (ev) => funcToActPoint(ev, funcParams)
-    else funcToAct = (ev) => funcToActPoint(funcParams)
+    const el = (typeof selec !== 'string') ? selec : document.querySelector(selec)
+    const funcToAct = isSendEv ? (ev) => funcToActPoint(ev, funcParams) : (ev) => funcToActPoint(funcParams)
 
     // @CR-Q what the fuck is this? I had a weird error and was too lazy to rummage through the debugger
     // so google told me to do this to catch errors, and it works I think, but I have no idea what it actually does...
