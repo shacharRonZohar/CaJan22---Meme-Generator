@@ -208,7 +208,37 @@ function setEvents(elCanvas, canvasCtx) {
             funcToActPoint: onShareMeme,
             funcParams: { elCanvas },
             isSendEv: null
-        }
+        },
+        {
+            id: 19,
+            selec: elCanvas,
+            evType: 'touchstart',
+            funcToActPoint: onMouseDownCanvas,
+            funcParams: {
+                elCanvas,
+                canvasCtx
+            },
+            isSendEv: true
+        },
+        {
+            id: 20,
+            selec: elCanvas,
+            evType: 'touchmove',
+            funcToActPoint: onMove,
+            funcParams: {
+                elCanvas,
+                canvasCtx
+            },
+            isSendEv: true
+        },
+        {
+            id: 21,
+            selec: elCanvas,
+            evType: 'touchend',
+            funcToActPoint: onMouseUpCanvas,
+            funcParams: null,
+            isSendEv: true
+        },
     ]
 }
 

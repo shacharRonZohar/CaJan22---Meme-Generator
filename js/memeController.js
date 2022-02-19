@@ -119,18 +119,19 @@ function onShareMeme({ elCanvas }) {
 }
 
 function getEvPos(ev) {
+    const touchEvs = ['touchstart', 'touchmove', 'touchend']
     var pos = {
-            x: ev.offsetX,
-            y: ev.offsetY
+        x: ev.offsetX,
+        y: ev.offsetY
+    }
+    if (touchEvs.includes(ev.type)) {
+        ev.preventDefault()
+        ev = ev.changedTouches[0]
+        pos = {
+            x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
+            y: ev.pageY - ev.target.offsetTop - ev.target.clientTop
         }
-        // if (gTouchEvs.includes(ev.type)) {
-        //     ev.preventDefault()
-        //     ev = ev.changedTouches[0]
-        //     pos = {
-        //         x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
-        //         y: ev.pageY - ev.target.offsetTop - ev.target.clientTop
-        //     }
-        // }
+    }
     return pos
 }
 
