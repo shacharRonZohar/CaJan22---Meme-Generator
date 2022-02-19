@@ -254,7 +254,6 @@ function addImgsEventListeners(elCanvas, canvasCtx) {
 function _addControlsEventListeners(elCanvas, canvasCtx) {
     _addChangeFontSizeListeners(elCanvas, canvasCtx)
     _addChangeAlignListeners(elCanvas, canvasCtx)
-    _addMoveTextListeners(elCanvas, canvasCtx)
     addImgsEventListeners(elCanvas, canvasCtx)
 }
 
@@ -276,18 +275,5 @@ function _addChangeAlignListeners(elCanvas, canvasCtx) {
             onSetAlign(elCanvas, canvasCtx, opts[currIdx])
             renderMeme(elCanvas, canvasCtx)
         })
-    })
-}
-
-function _addMoveTextListeners(elCanvas, canvasCtx) {
-    // console.log('document.querySelector()', document.querySelector('.move-text-up'))
-
-    document.querySelector('.move-text-up').addEventListener('click', () => {
-        onMoveText(elCanvas, canvasCtx, -5)
-        renderMeme(elCanvas, canvasCtx)
-    })
-    document.querySelector('.move-text-down').addEventListener('click', () => {
-        onMoveText(elCanvas, canvasCtx, 5)
-        renderMeme(elCanvas, canvasCtx)
     })
 }
