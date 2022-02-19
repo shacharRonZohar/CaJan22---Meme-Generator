@@ -49,7 +49,7 @@ function generateMeme(isRandom) {
 function getLineParams(isRandom) {
     const textSize = isRandom ? getRandomInt(5, 21) : 20
     return {
-        txt: isRandom ? getRandomTxt() : 'Enter your text here',
+        txt: isRandom ? getRandomTxt() : '',
         font: isRandom ? getRandomFont() : 'impact',
         size: textSize,
         fontSize: isRandom ? textSize + 28 : 48,

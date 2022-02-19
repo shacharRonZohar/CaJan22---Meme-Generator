@@ -5,6 +5,7 @@ function showMemeEditor(elCanvas, canvasCtx, isRandom) {
     document.querySelector('.main-editor-container').classList.add('open')
     setMeme(isRandom)
     onResizeCanvas({ elCanvas, canvasCtx })
+    switchTextInput()
     renderMeme(elCanvas, canvasCtx)
 }
 
@@ -142,6 +143,7 @@ function onDownloadMeme(ev, { elCanvas, canvasCtx }) {
 }
 
 function drawText(currIdx, elCanvas, canvasCtx, { size, font, fontSize, align, mainColor, secndColor, txt, pos }) {
+    if (!txt) txt = document.querySelector('.line-text').placeholder
     pos.x = _getCoordX(elCanvas, align)
     const currFont = `${fontSize}px ${font}`
     canvasCtx.font = currFont
