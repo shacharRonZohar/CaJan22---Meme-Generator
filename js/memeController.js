@@ -89,11 +89,9 @@ function onSaveMeme({ elCanvas }) {
 function onMouseDownCanvas(ev) {
     const pos = getEvPos(ev)
     if (!isLineClicked(pos)) return
-
-    console.log('pos', pos)
     setStartPos(pos)
     setLineIsDrag(true)
-    document.body.style.cursor = 'grabbing'
+    document.querySelector('.main-canvas-container').style.cursor = 'grabbing'
 }
 
 function onMove(ev, { elCanvas, canvasCtx }) {
@@ -109,7 +107,7 @@ function onMove(ev, { elCanvas, canvasCtx }) {
 
 function onMouseUpCanvas() {
     setLineIsDrag(false)
-    document.body.style.cursor = 'grab'
+    document.querySelector('.main-canvas-container').style.cursor = 'grab'
 }
 
 function onShareMeme({ elCanvas }) {

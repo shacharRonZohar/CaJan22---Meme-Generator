@@ -33,6 +33,10 @@ function onResizeCanvas({ elCanvas, canvasCtx }) {
     if (getMeme().selectedImgId !== undefined) renderMeme(elCanvas, canvasCtx)
 }
 
+function toggleMenu() {
+    document.querySelector('header nav').classList.toggle('menu-open');
+}
+
 function _setInitElVisibility() {
     document.querySelector('.main-editor-container').classList.remove('open')
 }
