@@ -1,10 +1,10 @@
 'use strict'
 const MEMES_STORAGE_KEY = 'memesDb'
 var gUserMemes = getMemesFromStorage() || []
-var gImgs = [{ id: 1, keywords: ['funny', 'cat'] },
-    { id: 2, keywords: ['funny', 'cat'] },
-    { id: 3, keywords: ['funny', 'cat'] },
-    { id: 4, keywords: ['funny', 'cat'] },
+var gImgs = [{ id: 1, keywords: ['funny', 'notcat'] },
+    { id: 2, keywords: ['notfunny', 'cat'] },
+    { id: 3, keywords: ['notfunny', 'cat'] },
+    { id: 4, keywords: ['funny', 'notcat'] },
     { id: 5, keywords: ['funny', 'cat'] },
     { id: 6, keywords: ['funny', 'cat'] },
     { id: 7, keywords: ['funny', 'cat'] },
@@ -13,12 +13,16 @@ var gImgs = [{ id: 1, keywords: ['funny', 'cat'] },
     { id: 10, keywords: ['funny', 'cat'] },
 
 ]
+var gFilterBy = 'funny'
 
 var gMeme = {}
 
 // Getters
 function getImgs() {
-    return gImgs
+    const filterRegex = new RegExp(gFilterBy);
+    return gImgs.filter(img => {
+        if (img.keywords.some(keyword => keyword.search(filterRegex) === 0)) return img
+    })
 }
 
 function getMeme() {
@@ -117,9 +121,14 @@ function getMemesFromStorage() {
 function addLine() {
     gMeme.lines.push(getLine(getLineParams(false)))
 }
+
 // Setters
 function setMeme(isRandom) {
     gMeme = generateMeme(isRandom)
+}
+
+function setFilter(filterBy) {
+    gFilterBy = filterBy
 }
 
 function setMemeImg(id) {

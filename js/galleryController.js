@@ -27,6 +27,11 @@ function onImgClicked(id) {
     setMemeImg(id)
 }
 
+function onSearch(ev) {
+    setFilter(ev.srcElement.value)
+    renderGallery(false)
+}
+
 function closeGallery() {
     document.querySelector('.main-gallery-container').classList.remove('open')
     document.querySelector('.main-gallery-nav').style.display = 'none'

@@ -155,6 +155,17 @@ function setEvents(elCanvas, canvasCtx) {
                 canvasCtx
             },
             isSendEv: false
+        },
+        {
+            id: 14,
+            selec: '.input-search',
+            evType: 'input',
+            funcToActPoint: onSearch,
+            funcParams: {
+                elCanvas,
+                canvasCtx
+            },
+            isSendEv: true
         }
     ]
 }
