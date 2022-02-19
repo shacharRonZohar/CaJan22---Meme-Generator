@@ -3,6 +3,7 @@
 function showGallery({ elCanvas, canvasCtx }, isMemes) {
     hideMemeEditor()
     renderGallery(isMemes)
+    setIsMemes(isMemes)
     if (!isMemes) addImgsEventListeners(elCanvas, canvasCtx)
 }
 
@@ -11,10 +12,9 @@ function renderGallery(isMemes) {
     const elGallContainer = document.querySelector('.main-gallery-container')
     elGallContainer.innerHTML = ''
     elGallContainer.classList.add('open')
-    const imgs = isMemes ? getMemesFromStorage() : getImgs()
-    imgs.forEach(img => {
+    getImgs(isMemes).forEach(img => {
         console.log('img', img)
-        const imgSrc = isMemes ? img : `assets/meme-imgs/${img.id}.jpg`
+        const imgSrc = isMemes ? img.data : `assets/meme-imgs/${img.id}.jpg`
         elGallContainer.innerHTML +=
             `<div class="img-container gallery-article" onclick="onImgClicked(${img.id})">
             <img src="${imgSrc}"/></div>`
@@ -29,13 +29,12 @@ function onImgClicked(id) {
 
 function onSearch(ev) {
     setFilter(ev.srcElement.value)
-    renderGallery(false)
+    renderGallery(getIsMemes())
 }
 
 function closeGallery() {
     document.querySelector('.main-gallery-container').classList.remove('open')
     document.querySelector('.main-gallery-nav').style.display = 'none'
-        // showMemeEditor()
 }
 
 function onRandomMeme({ elCanvas, canvasCtx }) {

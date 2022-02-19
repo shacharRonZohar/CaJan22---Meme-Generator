@@ -14,19 +14,25 @@ var gImgs = [{ id: 1, keywords: ['funny', 'notcat'] },
 
 ]
 var gFilterBy = 'funny'
-
+var gIsMemes
 var gMeme = {}
 
 // Getters
-function getImgs() {
-    const filterRegex = new RegExp(gFilterBy);
-    return gImgs.filter(img => {
+function getImgs(isMemes) {
+    var imgs = JSON.parse(JSON.stringify(gImgs))
+    if (isMemes) imgs = JSON.parse(JSON.stringify(gUserMemes))
+    const filterRegex = new RegExp(gFilterBy)
+    return imgs.filter(img => {
         if (img.keywords.some(keyword => keyword.search(filterRegex) === 0)) return img
     })
 }
 
 function getMeme() {
     return gMeme
+}
+
+function getIsMemes() {
+    return gIsMemes
 }
 
 function getCurrLineIdx() {
@@ -43,7 +49,6 @@ function getLineAlign(idx) {
 
 function generateMeme(isRandom) {
     return {
-
         selectedImgId: isRandom ? getRandomInt(1, gImgs.length + 1) : gMeme.selectedImgId,
         selectedLineIdx: 0,
         lines: isRandom ? getLines(getRandomInt(1, 3), isRandom) : getLines(2)
@@ -131,6 +136,10 @@ function setFilter(filterBy) {
     gFilterBy = filterBy
 }
 
+function setIsMemes(isMemes) {
+    gIsMemes = isMemes
+}
+
 function setMemeImg(id) {
     gMeme.selectedImgId = id
 }
@@ -209,6 +218,9 @@ function resetTxtPosY(idx) {
 
 // Storage
 function saveMemeToStorage(data) {
-    gUserMemes.push(data)
+    gUserMemes.push({
+        data,
+        keywords: gImgs[gMeme.selectedImgId - 1].keywords
+    })
     saveToStorage(MEMES_STORAGE_KEY, gUserMemes)
 }
