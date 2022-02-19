@@ -1,8 +1,6 @@
 'use strict'
 
 function showMemeEditor(elCanvas, canvasCtx, isRandom) {
-    console.log('isRandom', isRandom)
-
     document.querySelector('.main-content-container').classList.add('meme-mode')
     document.querySelector('.main-editor-container').classList.add('open')
     setMeme(isRandom)
@@ -22,8 +20,6 @@ function renderMeme(elCanvas, canvasCtx, isDownload, isAlign) {
 }
 
 function loadImageToCanvas(meme, elCanvas, canvasCtx, isDownload, isAlign) {
-    // Render on canvas
-
     var img = new Image()
     img.onload = renderImgOnCanvas.bind(null, img, elCanvas, canvasCtx, meme, isDownload, isAlign)
     img.src = `assets/meme-imgs/${meme.selectedImgId}.jpg`
@@ -111,8 +107,6 @@ function onMouseUpCanvas() {
 }
 
 function onShareMeme({ elCanvas }) {
-    console.log('elCanvas', elCanvas)
-
     uploadImg(elCanvas)
 }
 

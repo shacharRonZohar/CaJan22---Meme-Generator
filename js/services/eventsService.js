@@ -283,7 +283,7 @@ function addEventListenerToEl({ selec, evType, funcToActPoint, funcParams, isSen
 }
 
 
-//TODO: Continue Refactor
+//TODO: Continue Refactor - All of these need to be made dynamic
 function addImgsEventListeners(elCanvas, canvasCtx) {
     // Opens the editor when an img is pressed
     const elGallery = document.querySelector('.main-gallery-container')

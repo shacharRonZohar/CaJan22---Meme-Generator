@@ -13,7 +13,6 @@ function renderGallery(isMemes) {
     elGallContainer.innerHTML = ''
     elGallContainer.classList.add('open')
     getImgs(isMemes).forEach(img => {
-        console.log('img', img)
         const imgSrc = isMemes ? img.data : `assets/meme-imgs/${img.id}.jpg`
         elGallContainer.innerHTML +=
             `<div class="img-container gallery-article" onclick="onImgClicked(${img.id})">

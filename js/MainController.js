@@ -1,9 +1,5 @@
 'use strict'
 
-// TODO: Possible fix for making canvas dynamic:
-// Making TONS of media queries and forcing the canvas container
-// to a specific valid height and width
-
 function init() {
     _setInitElVisibility()
     const elCanvas = document.querySelector('#main-canvas')
@@ -16,7 +12,6 @@ function init() {
 function onResizeCanvas({ elCanvas, canvasCtx }) {
     const elCanvasContainer = document.querySelector('.main-canvas-container')
     elCanvas.height = elCanvas.width = elCanvasContainer.offsetWidth
-
     try {
         getMeme().lines.forEach((line, currIdx) => {
             const fontSize = elCanvasContainer.offsetWidth * 0.08
@@ -25,10 +20,6 @@ function onResizeCanvas({ elCanvas, canvasCtx }) {
         })
     } catch {
         console.log('Caught you Too!')
-            // console.log('elCanvasContainer.offsetWidth', elCanvasContainer.offsetWidth)
-    } finally {
-        // console.log('offsetWidth', elCanvasContainer.offsetWidth)
-
     }
     if (getMeme().selectedImgId !== undefined) renderMeme(elCanvas, canvasCtx)
 }
