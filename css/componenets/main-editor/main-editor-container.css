@@ -1,7 +1,6 @@
 .main-editor-container {
     grid-area: 1 / 1 / span 10 /span 10;
     display: none;
-    /* gap: 20px; */
     grid-template: 1fr 5fr / 1fr;
 }
 
@@ -10,20 +9,3 @@
         grid-template: repeat(10, 1fr) / repeat(10, 1fr);
     }
 }
-
-
-/* @media(max-width:1340px) {
-    .main-editor-container {
-        max-height: 10px;
-    }
-} */
-
-
-/* .main-editor-container>* {
-    height: 70%;
-    width: 70%;
-}
-
-.main-editor-container div:first-child {
-    margin-inline-end: 30px;
-} */
