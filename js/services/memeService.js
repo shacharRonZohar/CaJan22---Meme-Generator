@@ -1,6 +1,6 @@
 'use strict'
 const MEMES_STORAGE_KEY = 'memesDb'
-var gUserMemes = []
+var gUserMemes = getMemesFromStorage() || []
 var gImgs = [{ id: 1, keywords: ['funny', 'cat'] },
     { id: 2, keywords: ['funny', 'cat'] },
     { id: 3, keywords: ['funny', 'cat'] },
@@ -108,6 +108,10 @@ function getRandomTxt() {
 function getRandomFont() {
     const fonts = ['impact', 'arial']
     return fonts[getRandomInt(0, fonts.length)]
+}
+
+function getMemesFromStorage() {
+    return loadFromStorage(MEMES_STORAGE_KEY)
 }
 
 function addLine() {

@@ -138,8 +138,22 @@ function setEvents(elCanvas, canvasCtx) {
             id: 12,
             selec: '.link-gallery',
             evType: 'click',
-            funcToActPoint: renderGallery,
-            funcParams: null,
+            funcToActPoint: showGallery,
+            funcParams: {
+                elCanvas,
+                canvasCtx
+            },
+            isSendEv: false
+        },
+        {
+            id: 13,
+            selec: '.link-memes',
+            evType: 'click',
+            funcToActPoint: onShowMemes,
+            funcParams: {
+                elCanvas,
+                canvasCtx
+            },
             isSendEv: false
         }
     ]
@@ -192,11 +206,21 @@ function addEventListenerToEl({ selec, evType, funcToActPoint, funcParams, isSen
 
 
 //TODO: Continue Refactor
+function addImgsEventListeners(elCanvas, canvasCtx) {
+    // Opens the editor when an img is pressed
+    const elGallery = document.querySelector('.main-gallery-container')
+    elGallery.querySelectorAll('img').forEach(img => {
+        img.addEventListener('click', () => {
+            setTimeout(showMemeEditor, 1, elCanvas, canvasCtx)
+        })
+    })
+}
+
 function _addControlsEventListeners(elCanvas, canvasCtx) {
     _addChangeFontSizeListeners(elCanvas, canvasCtx)
     _addChangeAlignListeners(elCanvas, canvasCtx)
     _addMoveTextListeners(elCanvas, canvasCtx)
-    _addImgsEventListeners(elCanvas, canvasCtx)
+    addImgsEventListeners(elCanvas, canvasCtx)
 }
 
 function _addChangeFontSizeListeners(elCanvas, canvasCtx) {
@@ -230,15 +254,5 @@ function _addMoveTextListeners(elCanvas, canvasCtx) {
     document.querySelector('.move-text-down').addEventListener('click', () => {
         onMoveText(elCanvas, canvasCtx, 5)
         renderMeme(elCanvas, canvasCtx)
-    })
-}
-
-function _addImgsEventListeners(elCanvas, canvasCtx) {
-    // Opens the editor when an img is pressed
-    const elGallery = document.querySelector('.main-gallery-container')
-    elGallery.querySelectorAll('img').forEach(img => {
-        img.addEventListener('click', () => {
-            setTimeout(showMemeEditor, 1, elCanvas, canvasCtx)
-        })
     })
 }

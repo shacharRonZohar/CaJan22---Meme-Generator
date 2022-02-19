@@ -1,12 +1,19 @@
 'use strict'
 
 function showMemeEditor(elCanvas, canvasCtx, isRandom) {
+    console.log('isRandom', isRandom)
+
     document.querySelector('.main-content-container').classList.add('meme-mode')
     document.querySelector('.main-editor-container').classList.add('open')
     setMeme(isRandom)
     onResizeCanvas({ elCanvas, canvasCtx })
     switchTextInput()
     renderMeme(elCanvas, canvasCtx)
+}
+
+function hideMemeEditor() {
+    document.querySelector('.main-content-container').classList.remove('meme-mode')
+    document.querySelector('.main-editor-container').classList.remove('open')
 }
 
 function renderMeme(elCanvas, canvasCtx, isDownload) {
