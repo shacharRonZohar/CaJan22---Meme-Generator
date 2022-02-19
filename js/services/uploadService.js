@@ -6,10 +6,8 @@ function uploadImg(elCanvas) {
         const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
             // document.querySelector('.user-msg').innerText = `Your photo is available here: ${uploadedImgUrl}`
 
-        document.querySelector('.share-meme-inner').innerHTML = `
-        <a class="btn"style="display:none" href="https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}" title="Share on Facebook" target="_blank" onload="window.open('https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}'); return false;">
-           Share   
-        </a>`
+        // document.querySelector('.share-meme-confirm').href = `https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}`
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}`)
     }
     doUploadImg(imgDataUrl, onSuccess);
 }
