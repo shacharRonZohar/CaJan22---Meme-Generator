@@ -16,7 +16,7 @@ function onResizeCanvas({ elCanvas, canvasCtx }) {
         getMeme().lines.forEach((line, currIdx) => {
             const fontSize = elCanvasContainer.offsetWidth * 0.08
             setTextFontSize(currIdx, fontSize)
-            resetTxtPosY(currIdx)
+            resetTxtPos(currIdx, getCoordX(elCanvas, line.align))
         })
         renderMeme(elCanvas, canvasCtx)
     } catch {

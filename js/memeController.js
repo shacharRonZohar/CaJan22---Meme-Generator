@@ -172,9 +172,8 @@ function onDownloadMeme(ev, { elCanvas, canvasCtx }) {
 }
 
 function drawText(currIdx, elCanvas, canvasCtx, { font, fontSize, align, mainColor, secndColor, txt, pos }, isAlign) {
-    console.log('isAlign', isAlign)
     if (!txt) txt = document.querySelector('.line-text').placeholder
-    if (isAlign) pos.x = _getCoordX(elCanvas, align)
+    if (isAlign) pos.x = getCoordX(elCanvas, align)
     const currFont = `${fontSize}px ${font}`
     canvasCtx.font = currFont
     canvasCtx.lineWidth = fontSize / 10
@@ -213,7 +212,7 @@ function drawRectAroundText({ elCanvas, canvasCtx, rectStartX, rectStartY, rectE
     canvasCtx.strokeRect(rectStartX, rectStartY, rectEndX, rectEndY)
 }
 
-function _getCoordX(elCanvas, align) {
+function getCoordX(elCanvas, align) {
     switch (align) {
         case 'left':
             return 10

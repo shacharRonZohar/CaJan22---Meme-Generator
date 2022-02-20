@@ -240,8 +240,9 @@ function isLineClicked({ x, y }) {
     return isLine
 }
 
-function resetTxtPosY(idx) {
+function resetTxtPos(idx, x) {
     gMeme.lines[idx].pos.y = 0
+    gMeme.lines[idx].pos.x = x
 }
 
 // Storage
