@@ -18,10 +18,10 @@ function onResizeCanvas({ elCanvas, canvasCtx }) {
             setTextFontSize(currIdx, fontSize)
             resetTxtPosY(currIdx)
         })
+        renderMeme(elCanvas, canvasCtx)
     } catch {
         console.log('Caught you Too!')
     }
-    if (getMeme().selectedImgId !== undefined) renderMeme(elCanvas, canvasCtx)
 }
 
 function toggleMenu() {

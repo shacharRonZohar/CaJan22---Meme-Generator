@@ -267,16 +267,14 @@ function addEventListenerToEl({ selec, evType, funcToActPoint, funcParams, isSen
     // @CR-Q what the fuck is this? I had a weird error and was too lazy to rummage through the debugger
     // so google told me to do this to catch errors, and it works I think, but I have no idea what it actually does...
     // Better version of unit tests?
-    // var isError = false
     // try {
     //     el.addEventListener(evType, (ev) => {
     //         funcToAct(ev)
     //     })
     // } catch (error) {
     //     console.log(error, `selec: ${selec}`, `el: ${el}`)
-    //     isError = true
     // }
-    // if (!isError) 
+
     el.addEventListener(evType, (ev) => {
         funcToAct(ev)
     })
